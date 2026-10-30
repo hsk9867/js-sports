@@ -26,6 +26,36 @@
     document.addEventListener('keydown',e=>{if(e.key==='Escape')document.body.classList.remove('menu-open');});
   }
 
+  /* split text: wrap words for staggered reveal */
+  $$('.split, .split-w').forEach(el=>{
+    const walk=node=>{[...node.childNodes].forEach(ch=>{
+      if(ch.nodeType===3){
+        const frag=document.createDocumentFragment();
+        ch.textContent.split(/(\s+)/).forEach(tok=>{
+          if(!tok) return;
+          if(/^\s+$/.test(tok)){frag.appendChild(document.createTextNode(' '));return;}
+          const w=document.createElement('span');w.className='w';const i=document.createElement('span');i.textContent=tok;w.appendChild(i);frag.appendChild(w);
+        });
+        node.replaceChild(frag,ch);
+      }else if(ch.nodeType===1&&ch.tagName!=='BR'&&!ch.classList.contains('w')){walk(ch);}
+    });};
+    walk(el);
+    $$('.w>span',el).forEach((sp,k)=>sp.style.transitionDelay=(k*0.06)+'s');
+    el.classList.add('rv-split');
+  });
+  const ioS=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ioS.unobserve(e.target);}});},{threshold:.2});
+  $$('.rv-split').forEach(el=>ioS.observe(el));
+
+  /* count up */
+  const ease=t=>1-Math.pow(1-t,3);
+  function countUp(el){
+    const end=parseFloat(el.dataset.count), dur=1600, t0=performance.now();
+    const step=now=>{const p=Math.min(1,(now-t0)/dur);el.textContent=Math.round(end*ease(p)).toLocaleString('en-US').replace(/,/g,'');if(p<1)requestAnimationFrame(step);};
+    requestAnimationFrame(step);
+  }
+  const ioC=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){$$('[data-count]',e.target).forEach(countUp);$$('.pop',e.target).forEach(p=>p.classList.add('in'));ioC.unobserve(e.target);}});},{threshold:.3});
+  $$('.stats').forEach(el=>ioC.observe(el));
+
   /* reveal */
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
   $$('.rv').forEach(el=>io.observe(el));

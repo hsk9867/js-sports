@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Generates sub pages with shared header/footer. Run: python src/build_sub.py (from js-sports root)"""
 import io, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 HEAD = '''<!DOCTYPE html>
@@ -22,7 +23,7 @@ HEAD = '''<!DOCTYPE html>
     <a href="index.html" class="logo" aria-label="JS스포츠 홈"><img class="lg-light" src="img/logo-light.png" alt="JS SPORTS"><img class="lg-dark" src="img/logo-dark.png" alt="JS SPORTS"></a>
     <nav class="gnb">
       <a href="about.html"{on_about}>회사소개</a>
-      <a href="index.html#biz">사업분야</a>
+      <a href="business.html"{on_business}>사업분야</a>
       <a href="service.html"{on_service}>시설점검</a>
       <a href="rental.html"{on_rental}>기구렌탈</a>
       <a href="portfolio.html"{on_portfolio}>실적현황</a>
@@ -39,7 +40,7 @@ HEAD = '''<!DOCTYPE html>
   <div class="wrap">
     <div class="bigs">
       <a href="about.html"><span>01</span>회사소개</a>
-      <a href="index.html#biz"><span>02</span>사업분야</a>
+      <a href="business.html"><span>02</span>사업분야</a>
       <a href="service.html"><span>03</span>시설 정기점검</a>
       <a href="rental.html"><span>04</span>기구 렌탈</a>
       <a href="portfolio.html"><span>05</span>실적현황</a>
@@ -448,10 +449,13 @@ PAGES['contact.html'] = dict(
 </section>
 ''')
 
+import business_page
+PAGES['business.html'] = business_page.PAGE
+
 for fn, p in PAGES.items():
-    ons = {k: (' class="on"' if p['on'] == k else '') for k in ['about','service','rental','portfolio','contact']}
+    ons = {k: (' class="on"' if p['on'] == k else '') for k in ['about','business','service','rental','portfolio','contact']}
     html = HEAD.format(title=p['title'], desc=p['desc'], visual=p['visual'], crumb=p['crumb'], h1=p['h1'], sub=p['sub'], subnav=p['subnav'],
-                       on_about=ons['about'], on_service=ons['service'], on_rental=ons['rental'], on_portfolio=ons['portfolio'], on_contact=ons['contact'])
+                       on_about=ons['about'], on_business=ons['business'], on_service=ons['service'], on_rental=ons['rental'], on_portfolio=ons['portfolio'], on_contact=ons['contact'])
     html += p['body'] + FOOT
     with io.open(os.path.join(ROOT, fn), 'w', encoding='utf-8') as f:
         f.write(html)
