@@ -157,7 +157,9 @@ body.menu-open .fullmenu .bigs a:nth-child(6){transition-delay:.45s}
 .band h2 em{font-style:normal;color:var(--red)}
 .band .btn{margin-top:36px}
 .band p{margin-top:26px;font-size:17px;line-height:1.8;color:rgba(255,255,255,.78);max-width:560px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);}
+.stats4{grid-template-columns:repeat(2,1fr)}
+.stats{gap:1px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.14)}
 .stat{background:rgba(11,12,15,.6);backdrop-filter:blur(6px);padding:34px 26px}
 .stat b{display:block;font-size:clamp(34px,3.6vw,54px);font-weight:800;letter-spacing:-.04em;line-height:1;color:#fff}
 .stat b small{font-size:.45em;font-weight:700;margin-left:4px;color:var(--red)}
@@ -396,9 +398,12 @@ body.menu-open .fullmenu .bigs a:nth-child(6){transition-delay:.45s}
   .panel p{display:none}
   .panel + .panel{border-left:0;border-top:1px solid rgba(255,255,255,.12)}
   .panel .pin{padding:30px 24px}
-  .band .wrap{grid-template-columns:1fr;padding:90px 0;gap:40px}
+  .band .wrap{grid-template-columns:1fr;padding:70px 0;gap:32px}
   .band{min-height:0}
-  .stats{grid-template-columns:1fr}
+  .stats,.stats4{grid-template-columns:1fr 1fr}
+  .stat{padding:22px 18px}
+  .stat b{font-size:30px}
+  .stat span{margin-top:8px;font-size:13px}
   .team-grid,.cgrid,.feat3,.types,.check4,.gal,.points,.contact,.ov,.greet,.casehead{grid-template-columns:1fr}
   .pgrid{grid-template-columns:1fr;height:auto}
   .pcard{min-height:280px}
