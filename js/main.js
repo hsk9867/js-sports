@@ -44,7 +44,7 @@
     el.classList.add('rv-split');
   });
   const ioS=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ioS.unobserve(e.target);}});},{threshold:.2});
-  $$('.rv-split').forEach(el=>ioS.observe(el));
+  $$('.rv-split').forEach(el=>{if(el.closest('.hero'))el.classList.add('in');else ioS.observe(el);});
 
   /* count up */
   const ease=t=>1-Math.pow(1-t,3);

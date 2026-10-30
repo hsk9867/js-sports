@@ -482,3 +482,15 @@ body.menu-open .fullmenu .bigs a:nth-child(6){transition-delay:.45s}
   .area-pic .tag{font-size:72px}
   .marquee span{font-size:13px}
 }
+
+/* main-page typography */
+.hero h1 em.hl{color:#fff}
+.hero h1 .hl::after{bottom:.04em;height:.3em}
+.hl.dark::after{background:var(--black)}
+.hero .cap .line .split .w>span{transform:translateY(110%)}
+.hero .cap .line.on .split .w>span{transform:none}
+.hero .cap .line .hl::after{transform:scaleX(0)}
+.hero .cap .line.on .hl::after{transform:scaleX(1)}
+.band .hl::after{height:.26em}
+.band em.hl{color:#fff}
+.sec-head h2 .hl::after{height:.22em;bottom:.08em}
