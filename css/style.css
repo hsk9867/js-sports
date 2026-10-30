@@ -56,12 +56,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ---------- header ---------- */
 .header{position:fixed;top:0;left:0;right:0;height:90px;z-index:1000;transition:background .4s,box-shadow .4s,height .4s;color:#fff}
 .header .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{display:flex;align-items:center;gap:12px;line-height:1}
-.logo .mark{display:flex;align-items:center;justify-content:center;width:46px;height:34px;background:var(--red);color:#fff;font-weight:900;font-style:italic;font-size:21px;letter-spacing:-.06em;transform:skewX(-10deg);border-radius:2px}
-.logo .mark span{transform:skewX(10deg)}
-.logo .txt{display:flex;flex-direction:column;gap:3px}
-.logo .txt b{font-size:20px;font-weight:800;letter-spacing:-.02em}
-.logo .txt small{font-size:10px;letter-spacing:.22em;font-weight:600;opacity:.75;text-transform:uppercase}
+.logo{display:flex;align-items:center;line-height:0}
+.logo img{height:46px;width:auto;display:block}
+.logo .lg-dark{display:none}
+.header.solid .logo .lg-light,.header.sub .logo .lg-light{display:none}
+.header.solid .logo .lg-dark,.header.sub .logo .lg-dark{display:block}
+.footer .logo img{height:44px}
+.fullmenu .logo img{height:40px}
 .gnb{display:flex;gap:44px}
 .gnb a{position:relative;font-size:17px;font-weight:600;padding:8px 0;opacity:.92}
 .gnb a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--red);transition:width .3s var(--ease)}
@@ -75,7 +76,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .ham span:nth-child(2){top:10px;width:70%}
 .ham span:nth-child(3){top:20px;width:100%}
 .header.solid,.header.sub{background:#fff;color:var(--black);box-shadow:0 1px 0 rgba(0,0,0,.06);height:80px}
-.header.solid .logo .txt small,.header.sub .logo .txt small{color:var(--steel)}
 body.menu-open .ham span:nth-child(1){top:10px;transform:rotate(45deg)}
 body.menu-open .ham span:nth-child(2){opacity:0}
 body.menu-open .ham span:nth-child(3){top:10px;transform:rotate(-45deg)}
@@ -236,8 +236,6 @@ body.menu-open .fullmenu .bigs a:nth-child(6){transition-delay:.45s}
 .footer .legal li:first-child a{color:var(--red);font-weight:700}
 .footer .legal li a{font-weight:600;color:var(--ink-2)}
 .footer .grid{display:grid;grid-template-columns:1.2fr 2fr 1.2fr;gap:40px;padding-top:44px}
-.footer .logo{color:var(--black)}
-.footer .logo .txt small{color:var(--steel)}
 .footer .copy{margin-top:22px;line-height:1.7;font-size:13px}
 .footer .copy b{color:var(--ink)}
 .footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -377,6 +375,7 @@ body.menu-open .fullmenu .bigs a:nth-child(6){transition-delay:.45s}
   :root{--w:100%}
   .wrap{width:calc(100% - 32px)}
   .header{height:72px}
+  .logo img{height:36px}
   .header.solid,.header.sub{height:64px}
   .subnav{top:64px}
   .hd-tel{display:none}
