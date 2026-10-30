@@ -62,6 +62,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .header.solid .logo .lg-light,.header.sub .logo .lg-light{display:none}
 .header.solid .logo .lg-dark,.header.sub .logo .lg-dark{display:block}
 .footer .logo img{height:44px}
+.footer .logo .lg-dark{display:block}
 .fullmenu .logo img{height:40px}
 .gnb{display:flex;gap:44px}
 .gnb a{position:relative;font-size:17px;font-weight:600;padding:8px 0;opacity:.92}
