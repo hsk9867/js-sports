@@ -26,6 +26,7 @@ HEAD = '''<!DOCTYPE html>
       <a href="business.html"{on_business}>사업분야</a>
       <a href="service.html"{on_service}>시설점검</a>
       <a href="rental.html"{on_rental}>기구렌탈</a>
+      <a href="operation.html"{on_operation}>위탁운영</a>
       <a href="portfolio.html"{on_portfolio}>실적현황</a>
       <a href="contact.html"{on_contact}>상담문의</a>
     </nav>
@@ -43,8 +44,9 @@ HEAD = '''<!DOCTYPE html>
       <a href="business.html"><span>02</span>사업분야</a>
       <a href="service.html"><span>03</span>시설 정기점검</a>
       <a href="rental.html"><span>04</span>기구 렌탈</a>
-      <a href="portfolio.html"><span>05</span>실적현황</a>
-      <a href="contact.html"><span>06</span>상담문의</a>
+      <a href="operation.html"><span>05</span>위탁운영 · 인력파견</a>
+      <a href="portfolio.html"><span>06</span>실적현황</a>
+      <a href="contact.html"><span>07</span>상담문의</a>
     </div>
     <div class="info">
       <span class="lab">CONSULTING</span>
@@ -89,6 +91,7 @@ FOOT = '''
         <div><h4>회사소개</h4><ul><li><a href="about.html#greeting">인사말</a></li><li><a href="about.html#overview">회사개요</a></li><li><a href="about.html#warehouse">700평 창고</a></li><li><a href="about.html#process">팀 프로세스</a></li></ul></div>
         <div><h4>시설점검</h4><ul><li><a href="service.html#program">정기점검 프로그램</a></li><li><a href="service.html#cardio">유산소 기구관리</a></li><li><a href="service.html#weight">웨이트 기구관리</a></li><li><a href="service.html#sheet">점검표 관리</a></li></ul></div>
         <div><h4>기구렌탈</h4><ul><li><a href="rental.html#program">렌탈 프로그램</a></li><li><a href="rental.html#case-apt">사례 · 아파트</a></li><li><a href="rental.html#case-corp">사례 · 회사</a></li></ul></div>
+        <div><h4>위탁운영</h4><ul><li><a href="operation.html#intro">아파트 위탁운영</a></li><li><a href="operation.html#plans">운영 방식 A·B·C</a></li><li><a href="operation.html#staff">전문인력 배치 · 파견</a></li><li><a href="operation.html#cases">위탁운영 사례</a></li></ul></div>
         <div><h4>실적 · 문의</h4><ul><li><a href="portfolio.html">실적현황</a></li><li><a href="portfolio.html#photos">납품 사진</a></li><li><a href="contact.html">상담문의</a></li></ul></div>
       </div>
       <div class="addr">
@@ -112,9 +115,9 @@ PAGES = {}
 
 # ---------------- ABOUT ----------------
 PAGES['about.html'] = dict(
-    title='회사소개', desc='충남 유일 토탈 스포츠 서비스 전문기업 JS스포츠 인사말, 회사개요, 700평 창고, 팀 프로세스',
+    title='회사소개', desc='JS스포츠 인사말, 회사개요, 700평 창고, 팀 프로세스 - 아파트 커뮤니티 체육시설 위탁운영, 전문인력 배치·파견, 운동기구 정기점검·A/S, 기구 렌탈·납품 통합 제공',
     on='about', visual='img/hero-2.jpg', crumb='회사소개', h1='회사소개',
-    sub='체육시설 위탁운영부터 인력파견, 헬스기구 납품과 렌탈·리스, 인테리어까지 모두 컨설팅하는 충남 유일 전문업체',
+    sub='아파트 커뮤니티 체육시설 위탁운영, 전문인력 배치·파견, 운동기구 정기점검과 A/S, 기구 렌탈·납품까지 시설 상황에 맞춰 통합 제공합니다',
     subnav=nav([('greeting','인사말'),('overview','회사개요'),('warehouse','700평 창고'),('process','팀 프로세스')]),
     body='''
 <section class="section" id="greeting">
@@ -137,7 +140,7 @@ PAGES['about.html'] = dict(
 
 <section class="section alt" id="overview">
   <div class="wrap">
-    <div class="sec-head left rv"><span class="eyebrow">Overview</span><h2>회사개요</h2></div>
+    <div class="sec-head left rv"><span class="eyebrow">Overview</span><h2>회사개요</h2><p>JS스포츠는 아파트 커뮤니티 체육시설의 위탁운영, 기존 시설 대상 전문인력 배치·파견, 운동기구 정기점검과 A/S, 기구 렌탈·납품까지 시설 상황에 맞춰 통합 제공합니다.</p></div>
     <div class="ov">
       <div class="pic rv"><img src="img/gym-dark.jpg" alt="JS스포츠 시설" style="object-position:center 40%"></div>
       <dl class="dl rv d1">
@@ -149,7 +152,7 @@ PAGES['about.html'] = dict(
         <div><dt>FAX</dt><dd>041-534-0126</dd></div>
         <div><dt>H.P</dt><dd>010-9229-8051</dd></div>
         <div><dt>홈페이지</dt><dd>www.js-sports.kr</dd></div>
-        <div><dt>사업분야</dt><dd>운동기구 납품·A/S, 시설 정기점검, 헬스기구 렌탈·리스, 체육시설 위탁운영, 전문강사·인력파견, 헬스장 인테리어·시공</dd></div>
+        <div><dt>사업분야</dt><dd>아파트 커뮤니티 체육시설 위탁운영, 기존 시설 전문인력 배치·파견, 운동기구 정기점검·A/S, 헬스기구 렌탈·납품, 헬스장 인테리어·시공</dd></div>
         <div><dt>등록</dt><dd>조달청 · 나라장터 등록업체</dd></div>
       </dl>
     </div>
@@ -357,7 +360,7 @@ PAGES['portfolio.html'] = dict(
     title='실적현황', desc='JS스포츠 천안·아산 및 전국 피트니스, 기업체·아파트, 학교·관공서 납품 및 A/S 관리 실적',
     on='portfolio', visual='img/install-2.jpg', crumb='실적현황', h1='실적현황',
     sub='개인 피트니스 센터부터 기업체, 아파트, 학교·관공서까지 토탈 스포츠 서비스를 제공해 온 신뢰할 수 있는 기업',
-    subnav=nav([('fit','피트니스 · 개인PT'),('corp','기업체 · 아파트'),('pub','학교 · 관공서'),('photos','납품 사진')]),
+    subnav=nav([('fit','피트니스 · 개인PT'),('corp','기업체 · 아파트'),('pub','학교 · 관공서'),('op','아파트 위탁운영'),('photos','납품 사진')]),
     body=f'''
 <section class="section" id="fit">
   <div class="wrap">
@@ -384,6 +387,16 @@ PAGES['portfolio.html'] = dict(
       <p>조달청 · 나라장터 등록 업체로서 대학교, 중·고등학교, 주민센터, 소방서, 복지관 등 공공 체육시설에 조달 등록 기구를 납품하고 A/S를 관리합니다.</p>
     </div>
     <div class="chips rv" style="justify-content:flex-start">{chips(chips_pub)}</div>
+  </div>
+</section>
+<section class="section alt" id="op">
+  <div class="wrap">
+    <div class="casehead rv">
+      <h3><small>04 · OPERATION</small>아파트 커뮤니티<br>체육시설 위탁운영</h3>
+      <p>신불당 이안 · 불당 동일하이빌 · 용곡 두산위브 · 용곡 세광 2차 등 아파트 단지 내 커뮤니티 체육시설을 JS스포츠가 직접 위탁운영하고 있습니다. 운영인력 배치부터 회원관리, 기구 점검까지 함께 맡습니다.</p>
+    </div>
+    <div class="chips rv" style="justify-content:flex-start"><span>신불당 이안 아파트</span><span>불당 동일하이빌</span><span>용곡 두산위브</span><span>용곡 세광 2차</span><span class="etc">외 다수</span></div>
+    <a href="operation.html#cases" class="btn btn-dark rv" style="margin-top:32px">위탁운영 사례 사진 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
   </div>
 </section>
 <section class="section dark" id="photos">
@@ -441,7 +454,7 @@ PAGES['contact.html'] = dict(
     <form class="form rv">
       <div class="r2"><input name="name" placeholder="이름 / 업체명" required><input name="tel" placeholder="연락처" required></div>
       <select name="type"><option>시설 유형 선택</option><option>피트니스 센터 · PT샵</option><option>기업체 사내 체육시설</option><option>아파트 커뮤니티</option><option>학교 · 관공서</option><option>기타</option></select>
-      <textarea name="msg" placeholder="문의내용 (기구 납품 / 정기점검 / 렌탈 / 위탁운영 / 인테리어 등)"></textarea>
+      <textarea name="msg" placeholder="문의내용 (기구 납품 / 정기점검 / 렌탈 / 아파트 위탁운영 / 인력파견 / 인테리어 등)"></textarea>
       <label class="agree"><input type="checkbox" required> 개인정보 수집 및 이용에 동의합니다.</label>
       <button class="btn btn-red" type="submit" style="justify-content:center">상담 신청하기</button>
     </form>
@@ -449,13 +462,14 @@ PAGES['contact.html'] = dict(
 </section>
 ''')
 
-import business_page
+import business_page, operation_page
 PAGES['business.html'] = business_page.PAGE
+PAGES['operation.html'] = operation_page.PAGE
 
 for fn, p in PAGES.items():
-    ons = {k: (' class="on"' if p['on'] == k else '') for k in ['about','business','service','rental','portfolio','contact']}
+    ons = {k: (' class="on"' if p['on'] == k else '') for k in ['about','business','service','rental','operation','portfolio','contact']}
     html = HEAD.format(title=p['title'], desc=p['desc'], visual=p['visual'], crumb=p['crumb'], h1=p['h1'], sub=p['sub'], subnav=p['subnav'],
-                       on_about=ons['about'], on_business=ons['business'], on_service=ons['service'], on_rental=ons['rental'], on_portfolio=ons['portfolio'], on_contact=ons['contact'])
+                       on_about=ons['about'], on_business=ons['business'], on_service=ons['service'], on_rental=ons['rental'], on_operation=ons['operation'], on_portfolio=ons['portfolio'], on_contact=ons['contact'])
     html += p['body'] + FOOT
     with io.open(os.path.join(ROOT, fn), 'w', encoding='utf-8') as f:
         f.write(html)

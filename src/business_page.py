@@ -6,8 +6,8 @@ def nav(items):
 
 MARQUEE = '''
 <div class="marquee" aria-hidden="true"><div class="track">
-  <span>TOTAL SPORTS SERVICE</span><i></i><span>운동기구 납품 · A/S</span><i></i><span>시설 정기점검</span><i></i><span>기구 렌탈 · 리스</span><i></i><span>위탁운영 · 컨설팅 · 인테리어</span><i></i>
-  <span>TOTAL SPORTS SERVICE</span><i></i><span>운동기구 납품 · A/S</span><i></i><span>시설 정기점검</span><i></i><span>기구 렌탈 · 리스</span><i></i><span>위탁운영 · 컨설팅 · 인테리어</span><i></i>
+  <span>TOTAL SPORTS SERVICE</span><i></i><span>운동기구 납품 · A/S</span><i></i><span>시설 정기점검</span><i></i><span>기구 렌탈 · 리스</span><i></i><span>아파트 위탁운영 · 인력파견</span><i></i><span>컨설팅 · 인테리어</span><i></i>
+  <span>TOTAL SPORTS SERVICE</span><i></i><span>운동기구 납품 · A/S</span><i></i><span>시설 정기점검</span><i></i><span>기구 렌탈 · 리스</span><i></i><span>아파트 위탁운영 · 인력파견</span><i></i><span>컨설팅 · 인테리어</span><i></i>
 </div></div>
 '''
 
@@ -33,12 +33,13 @@ BODY = '''
   <div class="wrap">
     <p class="kicker split-w">JS SPORTS BUSINESS</p>
     <h2 class="split big">운동시설에 필요한 <b class="hl">모든 것</b>을<br>한 곳에서 <b class="hl">컨설팅</b>합니다</h2>
-    <p class="split-w lead">납품과 A/S, 정기점검, 렌탈·리스, 위탁운영과 인테리어까지. 개인 피트니스 센터부터 기업체·아파트·학교·관공서까지 다양한 현장에서 토탈 스포츠 서비스를 제공합니다.</p>
-    <ul class="jump">
+    <p class="split-w lead">납품과 A/S, 정기점검, 렌탈·리스, 아파트 위탁운영과 인력파견, 인테리어까지. 개인 피트니스 센터부터 기업체·아파트·학교·관공서까지 다양한 현장에서 토탈 스포츠 서비스를 제공합니다.</p>
+    <ul class="jump j5">
       <li><a href="#supply"><b>01</b>운동기구 납품 · A/S</a></li>
       <li><a href="#inspect"><b>02</b>시설 정기점검</a></li>
       <li><a href="#rental"><b>03</b>기구 렌탈 · 리스</a></li>
-      <li><a href="#consult"><b>04</b>위탁운영 · 컨설팅 · 인테리어</a></li>
+      <li><a href="#operation"><b>04</b>아파트 위탁운영 · 인력파견</a></li>
+      <li><a href="#consult"><b>05</b>컨설팅 · 인테리어</a></li>
     </ul>
   </div>
 </section>
@@ -61,11 +62,17 @@ BODY = '''
     ['초기비용 없이 고가의 클럽용 제품 이용', '계약기간 내 정기점검과 A/S 무료', '렌탈 종료 시 소유권 이전 또는 반납 선택', '장기렌탈 시 바닥공사 · 기초 인테리어 무상'],
     'img/rental-co-1.jpg', 'rental.html', '렌탈 프로그램 보기'
 ) + area(
-    'consult', '04', 'OPERATION & INTERIOR',
+    'operation', '04', 'OPERATION & STAFFING',
+    '아파트 커뮤니티<br>체육시설 <b class="hl">위탁운영</b>,<br>인력만 <b class="hl">배치</b>도 가능',
+    '관리사무소의 운영 부담은 줄이고 입주민의 이용 편의를 높이는 위탁운영 모델. 기구는 그대로 두고 트레이너 · 인포데스크 등 필요한 인력만 배치하는 전문인력 파견 서비스도 제공합니다.',
+    ['전면 위탁운영 · 부분 위탁운영 · 통합 패키지 중 선택', '운영시간 · 이용수칙 · 회원관리 · 민원 처리', '트레이너 · 인포데스크 · 순회관리 인력 탄력 배치', '월간 운영보고와 개선사항 제안'],
+    'img/op-doosan-2.jpg', 'operation.html', '위탁운영 자세히 보기', flip=True, dark=True
+) + area(
+    'consult', '05', 'CONSULTING & INTERIOR',
     '운영부터 시공까지,<br><b class="hl">한 팀</b>이<br>책임집니다',
-    '체육시설 위탁운영, 전문강사진 및 인력파견, 헬스장 건축 · 시공 · 견적과 CAD 계획까지. 시설관리팀 · 영업 컨설팅팀 · 인테리어팀이 하나의 현장을 함께 만듭니다.',
-    ['체육시설 위탁운영 및 지점 운영 관리', '아파트 · 관공서 전문강사 및 인력파견', '헬스장 건축 / 시공 / 견적, CAD 계획', '인테리어 견적 및 컨설팅'],
-    'img/facility.jpg', 'about.html#process', '팀 프로세스 보기', flip=True, dark=True
+    '체육시설 컨설팅, 헬스장 건축 · 시공 · 견적과 CAD 계획, 인테리어 견적까지. 시설관리팀 · 영업 컨설팅팀 · 인테리어팀이 하나의 현장을 함께 만듭니다.',
+    ['체육시설 컨설팅 및 지점 운영 관리', '헬스장 건축 / 시공 / 견적, CAD 계획', '인테리어 견적 및 컨설팅', '장기렌탈 시 바닥공사 · 기초 인테리어 무상'],
+    'img/facility.jpg', 'about.html#process', '팀 프로세스 보기'
 ) + MARQUEE + '''
 <section class="section numbers">
   <div class="wrap">
@@ -82,7 +89,7 @@ BODY = '''
 PAGE = dict(
     title='사업분야', desc='JS스포츠 사업분야 - 운동기구 납품·A/S, 시설 정기점검, 기구 렌탈·리스, 체육시설 위탁운영·컨설팅·인테리어',
     on='business', visual='img/hero-2.jpg', crumb='사업분야', h1='사업분야',
-    sub='납품 · A/S · 정기점검 · 렌탈 · 위탁운영 · 인테리어, 토탈 스포츠 서비스',
-    subnav=nav([('supply', '운동기구 납품 · A/S'), ('inspect', '시설 정기점검'), ('rental', '기구 렌탈 · 리스'), ('consult', '위탁운영 · 컨설팅 · 인테리어')]),
+    sub='납품 · A/S · 정기점검 · 렌탈 · 아파트 위탁운영 · 인력파견 · 인테리어, 토탈 스포츠 서비스',
+    subnav=nav([('supply', '운동기구 납품 · A/S'), ('inspect', '시설 정기점검'), ('rental', '기구 렌탈 · 리스'), ('operation', '아파트 위탁운영 · 인력파견'), ('consult', '컨설팅 · 인테리어')]),
     body=BODY,
 )

@@ -494,3 +494,55 @@ body.menu-open .fullmenu .bigs a:nth-child(6){transition-delay:.45s}
 .band .hl::after{height:.26em}
 .band em.hl{color:#fff}
 .sec-head h2 .hl::after{height:.22em;bottom:.08em}
+
+/* ---------- 2026-11-03 위탁운영 · 인력파견 추가 ---------- */
+.gnb{gap:34px}
+.gnb a{font-size:16px}
+body.menu-open .fullmenu .bigs a:nth-child(7){transition-delay:.52s}
+.footer .cols{grid-template-columns:repeat(5,1fr)}
+.cgrid.c4{grid-template-columns:repeat(4,1fr);gap:32px 24px}
+.cgrid.c4 .ccard h3{font-size:18px}
+.pick{padding:0 0 140px}
+.pick4 .chk{display:flex;flex-direction:column;min-height:0;position:relative;transition:transform .5s var(--ease),box-shadow .5s;border:1px solid var(--steel-3);border-top:4px solid var(--red)}
+.pick4 .chk:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(11,12,15,.35)}
+.pick4 .chk .no{font-size:13px;font-weight:800;color:var(--red);letter-spacing:.2em;margin-bottom:18px}
+.pick4 .chk h3{font-size:24px}
+.pick4 .chk p{flex:1}
+.pick4 .chk .go{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:14px;font-weight:700;color:var(--black)}
+.pick4 .chk .go::after{content:"";width:28px;height:1px;background:var(--black);transition:width .4s}
+.pick4 .chk:hover .go{color:var(--red)}
+.pick4 .chk:hover .go::after{width:44px;background:var(--red)}
+.section.alt .pick4 .chk{border-color:transparent;border-top-color:var(--red)}
+.pick-tag{margin-top:40px;text-align:center;font-size:15px;font-weight:700;color:var(--steel);letter-spacing:.02em}
+.pick-tag::before{content:"";display:inline-block;width:28px;height:2px;background:var(--red);vertical-align:middle;margin-right:14px}
+.jump.j5{grid-template-columns:repeat(5,1fr)}
+.plist{margin-top:16px;display:grid;gap:9px}
+.plist li{position:relative;padding-left:18px;font-size:15.5px;line-height:1.6;color:var(--ink-2)}
+.plist li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:7px;background:var(--red);transform:rotate(45deg)}
+.point.dk{background:var(--ink-2);border-color:rgba(255,255,255,.1);color:#fff}
+.point.dk .plist li{color:var(--steel-3)}
+.types.plans{grid-template-columns:repeat(3,1fr)}
+.types.plans .type{padding:42px 36px}
+.types.plans .type h3{font-size:26px}
+.types.plans .type .big{font-size:150px}
+.quote{margin-top:56px;padding:40px 48px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);text-align:center;font-size:clamp(22px,2.6vw,34px);font-weight:800;letter-spacing:-.02em;line-height:1.3;color:#fff}
+.quote span{display:block;font-size:13px;font-weight:800;letter-spacing:.2em;color:var(--red);margin-bottom:14px}
+.opcase{margin-bottom:72px}
+.opcase:last-of-type{margin-bottom:0}
+.gal.g2{grid-template-columns:1fr 1fr}
+.gal.g2 figure{aspect-ratio:16/10}
+.oplist{margin-top:72px;padding-top:40px;border-top:1px solid var(--steel-3)}
+.oplist .lab{display:block;font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--red);margin-bottom:18px}
+@media (max-width:1180px){
+  .cgrid.c4{grid-template-columns:1fr 1fr}
+  .footer .cols{grid-template-columns:repeat(3,1fr)}
+  .jump.j5{grid-template-columns:1fr 1fr}
+  .types.plans{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .cgrid.c4,.gal.g2{grid-template-columns:1fr}
+  .footer .cols{grid-template-columns:1fr 1fr}
+  .pick{padding:0 0 90px}
+  .quote{padding:28px 22px;margin-top:36px}
+  .opcase{margin-bottom:48px}
+}
