@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>JS스포츠 회사소개 카탈로그 (B5)</title>
+<style>
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Regular.woff2) format("woff2");font-weight:400}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Medium.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-SemiBold.woff2) format("woff2");font-weight:600}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Bold.woff2) format("woff2");font-weight:700}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-ExtraBold.woff2) format("woff2");font-weight:800}
+@font-face{font-family:"Pretendard";src:url(fonts/Pretendard-Black.woff2) format("woff2");font-weight:900}
+
+/* ===== B5 (JIS) 182 x 257mm ===== */
+:root{
+  --b:3mm;             /* bleed (재단여백) */
+  --W:182mm;--H:257mm;
+  --m:14mm;            /* 안쪽 여백 */
+  --red:#C8102E;--red-deep:#8F0A1F;--black:#0B0C0F;--ink:#15171C;--ink2:#1F2229;
+  --steel:#5F6B7A;--steel2:#8B97A6;--steel3:#C3CAD3;--pale:#EEF1F4;--line:#D9DEE4;
+}
+@page{size:188mm 263mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font-family:"Pretendard",-apple-system,"Malgun Gothic",sans-serif;color:var(--ink);line-height:1.55;letter-spacing:-.01em;word-break:keep-all;-webkit-print-color-adjust:exact;print-color-adjust:exact;font-size:9.5pt}
+img{display:block}
+ul{list-style:none}
+
+.pg{position:relative;width:calc(var(--W) + 2*var(--b));height:calc(var(--H) + 2*var(--b));overflow:hidden;background:#fff;page-break-after:always;break-after:page}
+.pg:last-child{page-break-after:auto;break-after:auto}
+.pg.dark{background:var(--black);color:#fff}
+.pg.pale{background:var(--pale)}
+.pg.red{background:var(--red);color:#fff}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.in{position:absolute;left:calc(var(--b) + var(--m));right:calc(var(--b) + var(--m));top:calc(var(--b) + 22mm);bottom:calc(var(--b) + 16mm)}
+.hd{position:absolute;left:calc(var(--b) + var(--m));right:calc(var(--b) + var(--m));top:calc(var(--b) + 9mm);display:flex;justify-content:space-between;align-items:center;font-size:7pt;font-weight:700;letter-spacing:.18em;color:var(--steel2);text-transform:uppercase}
+.hd b{color:var(--red)}
+.hd::after{content:"";position:absolute;left:0;right:0;bottom:-3mm;height:.4pt;background:var(--line)}
+.dark .hd{color:rgba(255,255,255,.55)}
+.dark .hd::after{background:rgba(255,255,255,.14)}
+.pn{position:absolute;left:calc(var(--b) + var(--m));right:calc(var(--b) + var(--m));bottom:calc(var(--b) + 8mm);display:flex;justify-content:space-between;align-items:center;font-size:7pt;color:var(--steel2);letter-spacing:.1em}
+.pn b{font-size:9pt;color:var(--ink);font-weight:800}
+.dark .pn{color:rgba(255,255,255,.5)}.dark .pn b{color:#fff}
+.pn.r{justify-content:flex-end}
+
+.eyebrow{display:inline-block;font-size:7.5pt;font-weight:800;letter-spacing:.2em;color:var(--red);text-transform:uppercase;margin-bottom:3mm}
+h2.t{font-size:21pt;font-weight:800;letter-spacing:-.03em;line-height:1.2;color:var(--black)}
+.dark h2.t{color:#fff}
+h2.t em{font-style:normal;color:var(--red)}
+h2.t .hl{background:linear-gradient(transparent 62%,rgba(200,16,46,.9) 62%,rgba(200,16,46,.9) 92%,transparent 92%)}
+.dark h2.t .hl{background:linear-gradient(transparent 62%,var(--red) 62%,var(--red) 92%,transparent 92%)}
+p.lead{margin-top:4mm;font-size:9.5pt;line-height:1.7;color:var(--steel)}
+.dark p.lead{color:var(--steel3)}
+.sec{margin-bottom:7mm}
+
+/* photos */
+.ph{overflow:hidden;background:var(--pale);position:relative;border-radius:1.5mm}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ph figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.5mm 3mm;background:linear-gradient(180deg,transparent,rgba(11,12,15,.8));color:#fff;font-size:7pt;font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3mm}
+
+/* cards */
+.card{border:.5pt solid var(--line);border-radius:2mm;padding:5mm 5.5mm;background:#fff}
+.card b.no{display:block;font-size:7pt;font-weight:800;letter-spacing:.2em;color:var(--red)}
+.card h3{margin-top:1.5mm;font-size:12.5pt;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.card p{margin-top:2mm;font-size:8.5pt;line-height:1.65;color:var(--steel)}
+.card.dk{background:var(--ink2);border-color:rgba(255,255,255,.12);color:#fff}
+.card.dk p{color:var(--steel3)}
+.list{margin-top:3mm;display:grid;gap:1.6mm}
+.list li{position:relative;padding-left:4.5mm;font-size:8.5pt;line-height:1.5;color:var(--ink2)}
+.list li::before{content:"";position:absolute;left:0;top:2mm;width:1.8mm;height:1.8mm;background:var(--red);transform:rotate(45deg)}
+.dk .list li{color:var(--steel3)}
+.chk li{padding-left:6mm}
+.chk li::before{content:"✓";width:4mm;height:4mm;border-radius:50%;background:var(--red);color:#fff;font-size:6.5pt;display:flex;align-items:center;justify-content:center;transform:none;top:.6mm}
+.note{margin-top:4mm;padding:3mm 4mm;background:var(--pale);border-left:1mm solid var(--red);color:var(--steel);font-size:8pt;line-height:1.6}
+.dark .note{background:rgba(255,255,255,.06);color:var(--steel3)}
+.chip{display:inline-block;padding:1.6mm 2.8mm;border:.5pt solid var(--steel3);font-size:7.8pt;font-weight:600;color:var(--ink2);margin:0 1.4mm 1.4mm 0;background:#fff;border-radius:1mm}
+.chip.etc{color:var(--red);border-style:dashed}
+.dark .chip{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18);color:var(--steel3)}
+.stat{padding:4mm 4.5mm;border:.5pt solid rgba(255,255,255,.18);background:rgba(255,255,255,.05)}
+.stat b{display:block;font-size:22pt;font-weight:800;letter-spacing:-.04em;line-height:1;color:#fff}
+.stat b small{font-size:9pt;color:var(--red);margin-left:1mm;font-weight:700}
+.stat span{display:block;margin-top:2mm;font-size:7.5pt;color:var(--steel3);line-height:1.45}
+.dl{border-top:1.2pt solid var(--black)}
+.dl div{display:grid;grid-template-columns:30mm 1fr;gap:4mm;padding:2.6mm 1mm;border-bottom:.5pt solid var(--line);font-size:9pt}
+.dl dt{font-weight:700;color:var(--black)}
+.dl dd{color:var(--ink2)}
+
+/* ===== COVER ===== */
+.cover .bg{background-image:url(../img/op-doosan-1.jpg);filter:grayscale(1) contrast(1.05);opacity:.5}
+.cover .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,12,15,.4) 0%,rgba(11,12,15,.75) 55%,rgba(11,12,15,.98) 100%)}
+.cover .logo{position:absolute;left:calc(var(--b) + var(--m));top:calc(var(--b) + 24mm);width:62mm}
+.cover .kicker{position:absolute;left:calc(var(--b) + var(--m));top:calc(var(--b) + 122mm);color:#fff}
+.cover .kicker small{display:flex;align-items:center;gap:3mm;font-size:8pt;font-weight:700;letter-spacing:.28em;color:#fff}
+.cover .kicker small::before{content:"";width:12mm;height:.6mm;background:var(--red)}
+.cover .kicker h1{margin-top:5mm;font-size:30pt;font-weight:800;letter-spacing:-.035em;line-height:1.12}
+.cover .kicker h1 em{font-style:normal;color:var(--red)}
+.cover .kicker p{margin-top:5mm;font-size:9.5pt;line-height:1.75;color:rgba(255,255,255,.78);max-width:120mm}
+.cover .tags{position:absolute;left:calc(var(--b) + var(--m));bottom:calc(var(--b) + 36mm);display:flex;flex-wrap:wrap;gap:2mm;max-width:150mm}
+.cover .tags span{padding:1.8mm 3.2mm;border:.5pt solid rgba(255,255,255,.35);color:#fff;font-size:7.5pt;font-weight:600;letter-spacing:.02em}
+.cover .foot{position:absolute;left:calc(var(--b) + var(--m));right:calc(var(--b) + var(--m));bottom:calc(var(--b) + 14mm);display:flex;justify-content:space-between;align-items:flex-end;color:rgba(255,255,255,.75);font-size:7.5pt;line-height:1.7;border-top:.5pt solid rgba(255,255,255,.25);padding-top:4mm}
+.cover .foot b{display:block;color:#fff;font-size:14pt;font-weight:800;letter-spacing:-.01em;line-height:1.1;margin-bottom:1.5mm}
+.cover .foot .r{text-align:right}
+
+/* ===== CONTENTS ===== */
+.toc{display:grid;grid-template-columns:1fr;gap:0;margin-top:6mm;border-top:1.2pt solid var(--black)}
+.toc li{display:grid;grid-template-columns:10mm 1fr 14mm;align-items:baseline;gap:4mm;padding:3.2mm 0;border-bottom:.5pt solid var(--line)}
+.toc li b{font-size:8pt;color:var(--red);letter-spacing:.15em;font-weight:800}
+.toc li strong{font-size:11pt;font-weight:800;letter-spacing:-.02em;color:var(--black)}
+.toc li small{display:block;font-size:8pt;color:var(--steel);margin-top:.6mm;font-weight:500}
+.toc li span{text-align:right;font-size:9pt;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums}
+.kstats{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-top:8mm}
+.kstats .k{padding:4mm 3.5mm;background:var(--black);color:#fff;border-radius:1.5mm}
+.kstats .k b{display:block;font-size:17pt;font-weight:800;letter-spacing:-.04em;line-height:1}
+.kstats .k b small{font-size:8pt;color:var(--red);margin-left:.8mm}
+.kstats .k span{display:block;margin-top:2mm;font-size:7pt;color:var(--steel3);line-height:1.4}
+
+/* ===== GREETING ===== */
+.greet{display:grid;grid-template-columns:52mm 1fr;gap:8mm;align-items:start;margin-top:7mm}
+.greet .ph{height:150mm;border-radius:2mm}
+.greet .ph img{filter:grayscale(.3)}
+.greet .badge{position:absolute;left:4mm;bottom:4mm;background:var(--red);color:#fff;padding:3mm 3.5mm;font-weight:800;font-size:9.5pt;line-height:1.3}
+.greet .badge small{display:block;font-size:6.5pt;letter-spacing:.14em;opacity:.9;margin-bottom:1mm;font-weight:600}
+.greet .body{display:grid;gap:3mm;font-size:9pt;line-height:1.8;color:var(--ink2)}
+.greet .sign{margin-top:6mm;font-size:8.5pt;color:var(--steel)}
+.greet .sign b{font-size:14pt;color:var(--black);font-weight:800;margin-left:2.5mm;letter-spacing:.1em}
+
+/* ===== TEAM ===== */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-top:5mm}
+.team .tc{background:#fff;border:.5pt solid var(--line);padding:4.5mm 4mm;border-radius:2mm}
+.team .tc b.no{display:block;font-size:6.5pt;font-weight:800;color:var(--red);letter-spacing:.2em}
+.team .tc h3{margin-top:1.5mm;font-size:12pt;font-weight:800;letter-spacing:-.02em}
+.team .tc h3 small{display:block;font-size:6.5pt;color:var(--steel2);letter-spacing:.1em;font-weight:600;margin-top:.8mm}
+.team .tc ul{margin-top:3mm;border-top:.5pt solid var(--line);padding-top:2.5mm;display:grid;gap:1.3mm}
+.team .tc li{position:relative;padding-left:4mm;font-size:8pt;color:var(--ink2)}
+.team .tc li::before{content:"";position:absolute;left:0;top:1.8mm;width:1.6mm;height:1.6mm;background:var(--red);transform:rotate(45deg)}
+
+/* ===== WAREHOUSE ===== */
+.wh .bg{background-image:url(../img/warehouse-2.jpg);filter:grayscale(1) contrast(1.05)}
+.wh .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,12,15,.88) 0%,rgba(11,12,15,.72) 45%,rgba(11,12,15,.95) 100%)}
+.wh .in{color:#fff}
+.wh h2.t{color:#fff;font-size:26pt}
+.wh .stats3{display:grid;grid-template-columns:1fr;gap:2mm;margin-top:7mm;max-width:88mm}
+.wh .ph{border-radius:1.5mm}
+.wh .g3{position:absolute;left:0;right:0;bottom:0}
+.wh .g3 .ph{height:40mm}
+
+/* ===== AREAS ===== */
+.areas{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:5mm}
+.area{position:relative;border:.5pt solid var(--line);border-radius:2mm;padding:4.5mm 4.5mm 4.5mm;overflow:hidden;background:#fff}
+.area .big{position:absolute;right:2mm;top:-1mm;font-size:30pt;font-weight:900;color:var(--pale);letter-spacing:-.06em;line-height:1}
+.area em{position:relative;font-style:normal;font-size:6.5pt;font-weight:800;letter-spacing:.2em;color:var(--red)}
+.area h3{position:relative;margin-top:1.5mm;font-size:12pt;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.area p{position:relative;margin-top:1.8mm;font-size:8pt;line-height:1.6;color:var(--steel)}
+.area .list{margin-top:2.5mm}
+.area .list li{font-size:7.8pt}
+.pick{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5mm;margin-top:4mm}
+.pick .pk{border-top:1.2mm solid var(--red);background:var(--pale);padding:3.5mm 3mm;border-radius:0 0 1.5mm 1.5mm}
+.pick .pk b{display:block;font-size:6.5pt;color:var(--red);letter-spacing:.2em;font-weight:800}
+.pick .pk h4{margin-top:1.2mm;font-size:10pt;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+.pick .pk p{margin-top:1.5mm;font-size:7.5pt;color:var(--steel);line-height:1.5}
+.tagline{margin-top:4mm;text-align:center;font-size:8pt;font-weight:700;color:var(--steel);letter-spacing:.02em}
+.tagline::before{content:"";display:inline-block;width:8mm;height:.5mm;background:var(--red);vertical-align:middle;margin-right:3mm}
+
+/* ===== OPERATION ===== */
+.op2{display:grid;grid-template-columns:1fr 1fr;gap:3.5mm;margin-top:5mm}
+.plans{display:grid;grid-template-columns:1fr;gap:3mm;margin-top:5mm}
+.plan{position:relative;border:.5pt solid var(--line);border-radius:2mm;padding:4.5mm 5mm;display:grid;grid-template-columns:40mm 1fr;gap:5mm;align-items:start;overflow:hidden;background:#fff}
+.plan.b{background:var(--black);color:#fff;border-color:var(--black)}
+.plan .lab{display:inline-block;background:var(--red);color:#fff;font-weight:800;font-size:7pt;letter-spacing:.14em;padding:1.4mm 2.6mm}
+.plan h3{margin-top:2.5mm;font-size:14pt;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+.plan p{margin-top:2mm;font-size:8pt;line-height:1.6;color:var(--steel)}
+.plan.b p{color:var(--steel3)}
+.plan .chk{margin-top:0;align-self:center}
+.plan .chk li{font-size:8.5pt;color:var(--ink2)}
+.plan.b .chk li{color:#fff}
+.plan .bigl{position:absolute;right:-2mm;bottom:-8mm;font-size:48pt;font-weight:900;color:rgba(95,107,122,.08);line-height:1}
+.plan.b .bigl{color:rgba(255,255,255,.06)}
+.quote{margin-top:5mm;padding:5mm 6mm;border:.5pt solid rgba(255,255,255,.18);background:rgba(255,255,255,.04);text-align:center;font-size:14pt;font-weight:800;letter-spacing:-.02em;line-height:1.3;color:#fff}
+.quote span{display:block;font-size:6.5pt;font-weight:800;letter-spacing:.2em;color:var(--red);margin-bottom:2mm}
+.caseh{display:flex;align-items:baseline;gap:4mm;margin:0 0 3mm}
+.caseh b{font-size:6.5pt;color:var(--red);letter-spacing:.2em;font-weight:800}
+.caseh h3{font-size:14pt;font-weight:800;letter-spacing:-.03em}
+.caseh small{font-size:8pt;color:var(--steel);font-weight:500}
+.case{margin-bottom:6mm}
+
+/* ===== TYPES A/B ===== */
+.types{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:4mm}
+.type{position:relative;border:.5pt solid var(--line);border-radius:2mm;padding:5mm 5mm;overflow:hidden;background:#fff}
+.type.b{background:var(--black);color:#fff;border-color:var(--black)}
+.type .lab{display:inline-block;background:var(--red);color:#fff;font-weight:800;font-size:7pt;letter-spacing:.14em;padding:1.4mm 2.6mm}
+.type h3{margin-top:2.5mm;font-size:13pt;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.type p{margin-top:2mm;font-size:8pt;line-height:1.6;color:var(--steel)}
+.type.b p{color:var(--steel3)}
+.type .chk{margin-top:3mm}
+.type .chk li{font-size:8pt}
+.type.b .chk li{color:#fff}
+.type .bigl{position:absolute;right:-2mm;bottom:-10mm;font-size:60pt;font-weight:900;color:rgba(95,107,122,.08);line-height:1}
+.type.b .bigl{color:rgba(255,255,255,.06)}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:4mm}
+
+/* ===== CHECK (cardio/weight) ===== */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:3mm;margin-top:5mm}
+.feat .fc{border:.5pt solid var(--line);border-radius:2mm;overflow:hidden;background:#fff}
+.feat .fc .ph{height:52mm;border-radius:0}
+.feat .fc .tx{padding:3.5mm 3.5mm 4mm}
+.feat .fc .tx b{display:block;font-size:6.5pt;letter-spacing:.2em;color:var(--red);font-weight:800}
+.feat .fc .tx h4{margin-top:1.2mm;font-size:10pt;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.feat .fc .tx p{margin-top:1.5mm;font-size:7.6pt;color:var(--steel);line-height:1.55}
+.visit{display:inline-flex;align-items:center;gap:2.5mm;margin-top:4mm;padding:2.4mm 4mm;background:var(--red);color:#fff;font-weight:800;font-size:9pt;letter-spacing:-.01em;border-radius:1mm}
+
+/* ===== RENTAL ===== */
+.check4{display:grid;grid-template-columns:1fr 1fr;gap:3mm;margin-top:5mm}
+.check4 .c{background:#fff;padding:5mm 5mm;border-radius:2mm;border:.5pt solid var(--line);border-top:1.2mm solid var(--red)}
+.check4 .c .ico{width:11mm;height:11mm;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:3mm}
+.check4 .c .ico svg{width:5.5mm;height:5.5mm}
+.check4 .c h3{font-size:13pt;font-weight:800;letter-spacing:-.02em}
+.check4 .c p{margin-top:1.8mm;color:var(--steel);font-size:8.3pt;line-height:1.65}
+
+/* ===== PORTFOLIO ===== */
+.pf{margin-top:5mm}
+.pf .blk{margin-bottom:5mm;padding-bottom:4mm;border-bottom:.5pt solid var(--line)}
+.pf .blk:last-child{border:0}
+.pf h3{font-size:12pt;font-weight:800;letter-spacing:-.02em;margin-bottom:2.5mm}
+.pf h3 b{display:inline-block;font-size:6.5pt;letter-spacing:.2em;color:var(--red);margin-right:3mm;vertical-align:middle}
+.pf p{font-size:8pt;color:var(--steel);line-height:1.6;margin-bottom:2.5mm}
+
+/* ===== BACK ===== */
+.back .bg{background-image:url(../img/dumbbells-blur.jpg);opacity:.35}
+.back .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,12,15,.85),rgba(11,12,15,.98))}
+.back .mid{position:absolute;left:calc(var(--b) + var(--m));right:calc(var(--b) + var(--m));top:calc(var(--b) + 60mm);color:#fff}
+.back .mid img{width:70mm}
+.back .mid h2{margin-top:12mm;font-size:22pt;font-weight:800;letter-spacing:-.03em;line-height:1.25}
+.back .mid h2 em{font-style:normal;color:var(--red)}
+.back .mid p{margin-top:4mm;font-size:9pt;color:rgba(255,255,255,.72);line-height:1.7}
+.back .tel{margin-top:10mm;display:flex;align-items:center;gap:4mm;font-size:30pt;font-weight:800;letter-spacing:-.02em;line-height:1}
+.back .tel svg{width:10mm;height:10mm}
+.back .tel small{display:block;font-size:7.5pt;letter-spacing:.14em;font-weight:600;color:rgba(255,255,255,.7);margin-top:2mm}
+.back .addr{position:absolute;left:calc(var(--b) + var(--m));right:calc(var(--b) + var(--m));bottom:calc(var(--b) + 16mm);color:rgba(255,255,255,.8);font-size:8.5pt;line-height:1.9;border-top:.5pt solid rgba(255,255,255,.25);padding-top:5mm;display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.back .addr b{color:#fff;font-weight:700}
+.back .addr .cp{font-size:7pt;color:rgba(255,255,255,.45);letter-spacing:.06em;margin-top:3mm;grid-column:span 2}
+</style>
+</head>
+<body>
+
+<!-- ============ 01 COVER ============ -->
+<section class="pg dark cover">
+  <div class="bg"></div><div class="veil"></div>
+  <img class="logo" src="logo/logo-stack-black-t.png" alt="JS SPORTS">
+  <div class="kicker">
+    <small>COMPANY PROFILE · TOTAL SPORTS SERVICE</small>
+    <h1>운동시설의<br>처음부터 끝까지,<br><em>JS스포츠</em></h1>
+    <p>아파트 커뮤니티 체육시설 위탁운영, 전문인력 배치·파견, 운동기구 정기점검과 A/S, 기구 렌탈·납품까지 시설 상황에 맞춰 통합 제공하는 충남 아산의 토탈 스포츠 서비스 전문기업입니다.</p>
+  </div>
+  <div class="tags"><span>아파트 위탁운영</span><span>전문인력 배치·파견</span><span>시설 정기점검·A/S</span><span>기구 렌탈·납품</span><span>컨설팅·인테리어</span></div>
+  <div class="foot">
+    <div><b>1688-9634</b>컨설팅상담 · 평일 09:00 – 18:00<br>충남 아산시 배방읍 고불로 690-7</div>
+    <div class="r">WWW.JS-SPORTS.KR<br>FAX 041-534-0126 · H.P 010-9229-8051</div>
+  </div>
+</section>
+
+<!-- ============ 02 CONTENTS ============ -->
+<section class="pg">
+  <div class="hd"><span><b>JS SPORTS</b> · COMPANY PROFILE</span><span>CONTENTS</span></div>
+  <div class="in">
+    <span class="eyebrow">Contents</span>
+    <h2 class="t">회사소개서 <span class="hl">차례</span></h2>
+    <ul class="toc">
+      <li><b>01</b><div><strong>회사소개</strong><small>인사말 · 회사개요 · 팀 프로세스 · 700평 창고</small></div><span>03 – 05</span></li>
+      <li><b>02</b><div><strong>사업영역</strong><small>5대 사업영역 · 단지 상황에 따라 선택하는 4가지 서비스</small></div><span>06</span></li>
+      <li><b>03</b><div><strong>아파트 커뮤니티 체육시설 위탁운영</strong><small>시설·회원 운영관리 · 운영 방식 A/B/C · 전문인력 배치·파견</small></div><span>07 – 09</span></li>
+      <li><b>04</b><div><strong>위탁운영 사례</strong><small>신불당 이안 · 불당 동일하이빌 · 용곡 두산위브 · 용곡 세광 2차</small></div><span>10 – 11</span></li>
+      <li><b>05</b><div><strong>운동시설 관리점검 프로그램</strong><small>정기점검 A타입·B타입 · 유산소 기구관리 · 웨이트 기구관리 · 시설 및 점검표 관리</small></div><span>12 – 15</span></li>
+      <li><b>06</b><div><strong>운동기구 렌탈 및 납품</strong><small>기구렌탈 프로그램 4가지 체크리스트 · 렌탈 시공사례</small></div><span>16 – 17</span></li>
+      <li><b>07</b><div><strong>실적현황</strong><small>피트니스 · 기업체·아파트 · 학교·관공서 · 실제 납품 사진</small></div><span>18 – 19</span></li>
+    </ul>
+    <div class="kstats">
+      <div class="k"><b>2012</b><span>설립 이후<br>충남 대표 전문업체</span></div>
+      <div class="k"><b>700<small>평</small></b><span>창고형 매장<br>전시·시연 가능</span></div>
+      <div class="k"><b>1~2<small>일</small></b><span>A/S 접수 후<br>신속 방문</span></div>
+      <div class="k"><b>전국</b><span>충남·서울경기<br>전국 관리대행</span></div>
+    </div>
+    <p class="lead" style="margin-top:7mm">JS스포츠는 개인 피트니스 센터부터 기업체, 아파트 단지 내 운동시설 운영, 학교 및 관공서까지 다양한 유형의 업체에 ‘토탈 스포츠 서비스’를 제공한 경험을 보유한 신뢰할 수 있는 기업입니다. 납품하는 기구는 조달청 및 나라장터에 등록된 기구를 취급하며, JS스포츠 또한 조달청과 나라장터 등록 업체입니다.</p>
+  </div>
+  <div class="pn"><span>JS SPORTS · YOUR FITNESS PARTNER</span><b>02</b></div>
+</section>
+
+<!-- ============ 03 GREETING ============ -->
+<section class="pg">
+  <div class="hd"><span><b>01</b> · 회사소개</span><span>GREETING</span></div>
+  <div class="in">
+    <span class="eyebrow">Greeting</span>
+    <h2 class="t">신뢰받는 기업, 고객만족도 1위<br><em>JS스포츠</em>입니다</h2>
+    <div class="greet">
+      <figure class="ph"><img src="../img/grip.jpg" alt=""><div class="badge"><small>SINCE 2012</small>신뢰받는 기업<br>고객만족도 1위</div></figure>
+      <div>
+        <div class="body">
+          <p>안녕하십니까? JS스포츠 대표 송종수입니다.</p>
+          <p>저희 JS스포츠는 운동기구 납품 및 A/S, 헬스기구 리스·렌탈, 위탁운영, 전문강사진 및 인력 파견 전문 업체입니다.</p>
+          <p>현재 충남(천안·아산 외) 서울·경기 및 전국의 많은 일반 피트니스 센터, 관공서, 기업체, 아파트 단지 내 피트니스 등의 관리대행 및 A/S를 진행하고 있습니다. 납품하는 기구는 조달청 및 나라장터에 등록된 기구를 취급하며, 저희 업체 또한 조달청과 나라장터에 등록되어 있습니다.</p>
+          <p>전문 엔지니어 구성으로 단순한 일반 헬스용품점과 달리 매장 다이렉트 A/S가 가능하고, 타 업체에서 수리 불가한 국산 기구와 수입 기구까지도 완벽하게 수리할 수 있는 기술력을 보유하고 있습니다.</p>
+          <p>글로벌 시대에 걸맞게 앞으로 더욱 노력하여 신뢰받는 업체로 거듭날 수 있도록 저희 임직원 모두 약속드립니다.</p>
+        </div>
+        <div class="sign">JS스포츠 대표 <b>송 종 수</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · COMPANY PROFILE</span><b>03</b></div>
+</section>
+
+<!-- ============ 04 OVERVIEW + TEAM ============ -->
+<section class="pg pale">
+  <div class="hd"><span><b>01</b> · 회사소개</span><span>OVERVIEW · TEAM PROCESS</span></div>
+  <div class="in">
+    <span class="eyebrow">Overview</span>
+    <h2 class="t">회사개요</h2>
+    <p class="lead">JS스포츠는 아파트 커뮤니티 체육시설의 위탁운영, 기존 시설 대상 전문인력 배치·파견, 운동기구 정기점검과 A/S, 기구 렌탈·납품까지 시설 상황에 맞춰 통합 제공합니다.</p>
+    <dl class="dl" style="margin-top:5mm;background:#fff;padding:0 3mm">
+      <div><dt>회사명</dt><dd>JS스포츠</dd></div>
+      <div><dt>대표</dt><dd>송종수</dd></div>
+      <div><dt>설립일</dt><dd>2012년 3월 20일</dd></div>
+      <div><dt>본사</dt><dd>충남 아산시 배방읍 고불로 690-7</dd></div>
+      <div><dt>컨설팅상담</dt><dd>1688-9634 &nbsp;·&nbsp; FAX 041-534-0126 &nbsp;·&nbsp; H.P 010-9229-8051</dd></div>
+      <div><dt>홈페이지</dt><dd>www.js-sports.kr</dd></div>
+      <div><dt>사업분야</dt><dd>아파트 커뮤니티 체육시설 위탁운영, 기존 시설 전문인력 배치·파견, 운동기구 정기점검·A/S, 헬스기구 렌탈·납품, 헬스장 인테리어·시공</dd></div>
+      <div><dt>등록</dt><dd>조달청 · 나라장터 등록업체</dd></div>
+    </dl>
+    <div style="margin-top:9mm">
+      <span class="eyebrow">Team Process</span>
+      <h2 class="t" style="font-size:16pt">JS스포츠는 체계적으로 팀을 만들어 운영합니다</h2>
+      <div class="team">
+        <div class="tc"><b class="no">TEAM 01</b><h3>시설관리팀<small>FACILITY MANAGEMENT</small></h3><ul><li>운동시설 점검</li><li>A/S 매뉴얼 관리</li><li>지점관리 및 방문 순회</li><li>지점 운영 관리</li></ul></div>
+        <div class="tc"><b class="no">TEAM 02</b><h3>영업 컨설팅팀<small>SALES CONSULTING</small></h3><ul><li>체육시설 컨설팅</li><li>아파트 및 관공서 인력파견</li><li>헬스기구 구매 및 렌탈</li></ul></div>
+        <div class="tc"><b class="no">TEAM 03</b><h3>인테리어팀<small>INTERIOR &amp; CONSTRUCTION</small></h3><ul><li>헬스장 건축 / 시공 / 견적</li><li>CAD 계획</li><li>인테리어 견적 및 컨설팅</li></ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · COMPANY PROFILE</span><b>04</b></div>
+</section>
+
+<!-- ============ 05 WAREHOUSE ============ -->
+<section class="pg dark wh">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="hd"><span><b>01</b> · 회사소개</span><span>WAREHOUSE</span></div>
+  <div class="in">
+    <span class="eyebrow">Warehouse</span>
+    <h2 class="t">충청권 최대 규모<br><em>700평대</em> 웨이트기구<br>수입 창고 보유</h2>
+    <p class="lead" style="max-width:110mm">JS스포츠는 충청권 최대 규모의 국내외 웨이트기구를 수입하는 700평대 창고형 매장을 운영하고 있습니다. 충청권 유일한 외산 브랜드 웨이트기구 수입업체로, A/S가 가능하고 매장 전시 및 시연이 가능합니다.</p>
+    <div class="stats3">
+      <div class="stat"><b>700<small>평</small></b><span>각종 웨이트기구 수입 창고 보유 · 국내외 웨이트기구 상시 입고</span></div>
+      <div class="stat"><b>유일</b><span>충청권 유일, 외산 브랜드 웨이트기구 수입 및 A/S 가능 업체</span></div>
+      <div class="stat"><b>전시 · 시연</b><span>매장에서 직접 보고, 사용해 보고, 수리까지 · 전문 엔지니어 상주</span></div>
+    </div>
+    <div class="g3">
+      <figure class="ph"><img src="../img/warehouse-1.jpg" alt=""><figcaption>700평대 창고형 매장</figcaption></figure>
+      <figure class="ph"><img src="../img/warehouse-3.jpg" alt=""><figcaption>외산 브랜드 직수입</figcaption></figure>
+      <figure class="ph"><img src="../img/install-2.jpg" alt=""><figcaption>덤벨 · 원판 대량 보유</figcaption></figure>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · COMPANY PROFILE</span><b>05</b></div>
+</section>
+
+<!-- ============ 06 BUSINESS AREAS ============ -->
+<section class="pg">
+  <div class="hd"><span><b>02</b> · 사업영역</span><span>BUSINESS</span></div>
+  <div class="in">
+    <span class="eyebrow">Business</span>
+    <h2 class="t">운동시설에 필요한 <span class="hl">모든 것</span>을<br>한 곳에서 컨설팅합니다</h2>
+    <div class="areas">
+      <div class="area"><span class="big">01</span><em>OPERATION</em><h3>아파트 커뮤니티 체육시설 위탁운영</h3><p>관리사무소의 운영 부담은 줄이고 입주민의 이용 편의와 시설관리의 일관성을 높이는 운영 모델.</p><ul class="list"><li>전면 · 부분 · 통합 패키지 중 선택</li><li>운영시간 · 이용수칙 · 회원 · 민원 관리</li></ul></div>
+      <div class="area"><span class="big">02</span><em>STAFFING</em><h3>기존 시설 전문인력 배치·파견</h3><p>시설은 이미 갖췄지만 상주 관리인력이 없는 아파트에 적합. 기구는 그대로, 필요한 사람만 배치합니다.</p><ul class="list"><li>트레이너 · 인포데스크 · 순회관리 인력</li><li>요일별 · 시간대별 탄력 배치</li></ul></div>
+      <div class="area"><span class="big">03</span><em>INSPECTION &amp; A/S</em><h3>시설 정기점검 · A/S</h3><p>연간 계약으로 월 1~2회 전문 엔지니어가 방문. A타입(점검 수수료형)과 B타입(A/S 전액 책임형) 중 선택.</p><ul class="list"><li>유산소 · 웨이트 기구 점검 및 점검표 작성</li><li>국산 · 수입 브랜드 원스톱 A/S</li></ul></div>
+      <div class="area"><span class="big">04</span><em>RENTAL &amp; SUPPLY</em><h3>기구 렌탈 · 납품</h3><p>목돈 ZERO. 고가의 클럽용 제품을 초기비용 부담 없이. 조달청 · 나라장터 등록 기구를 직접 납품하고 직접 수리합니다.</p><ul class="list"><li>계약기간 내 정기점검 · A/S 무료</li><li>장기렌탈 시 바닥공사 · 기초 인테리어 무상</li></ul></div>
+    </div>
+    <div class="area" style="margin-top:3mm;display:grid;grid-template-columns:44mm 1fr;gap:5mm;align-items:center"><span class="big">05</span><div><em>CONSULTING &amp; INTERIOR</em><h3>컨설팅 · 인테리어</h3></div><p style="margin:0">체육시설 컨설팅, 헬스장 건축 · 시공 · 견적과 CAD 계획, 인테리어 견적까지. 시설관리팀 · 영업 컨설팅팀 · 인테리어팀이 하나의 현장을 함께 만듭니다.</p></div>
+    <div style="margin-top:7mm">
+      <span class="eyebrow">For Apartment</span>
+      <h2 class="t" style="font-size:15pt">단지 상황에 따라 선택하는 <span class="hl">4가지 서비스</span></h2>
+      <div class="pick">
+        <div class="pk"><b>01</b><h4>정기점검 · A/S</h4><p>기구는 있고 전문 점검이 필요한 단지</p></div>
+        <div class="pk"><b>02</b><h4>기구 렌탈 · 납품</h4><p>노후 기구 교체 · 보강이 필요한 단지</p></div>
+        <div class="pk"><b>03</b><h4>전문인력 배치</h4><p>시설은 있지만 상주 관리인력이 없는 단지</p></div>
+        <div class="pk"><b>04</b><h4>아파트 위탁운영</h4><p>회원 · 시설 · 인력 운영을 통합 맡기려는 단지</p></div>
+      </div>
+      <p class="tagline">선택형 서비스 · 필요 항목만 결합 · 현장 진단을 통한 맞춤 운영 제안</p>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · BUSINESS</span><b>06</b></div>
+</section>
+
+<!-- ============ 07 OPERATION INTRO ============ -->
+<section class="pg">
+  <div class="hd"><span><b>03</b> · 아파트 위탁운영</span><span>OPERATION</span></div>
+  <div class="in">
+    <span class="eyebrow">Apartment Operation</span>
+    <h2 class="t">아파트 커뮤니티 체육시설<br><span class="hl">위탁운영</span></h2>
+    <p class="lead">관리사무소의 운영 부담은 줄이고, 입주민의 이용 편의와 시설관리의 일관성을 높이는 운영 모델입니다. JS스포츠가 시설 운영관리부터 회원 · 프로그램 관리까지 맡습니다.</p>
+    <figure class="ph" style="height:94mm;margin-top:5mm"><img src="../img/op-ian-1.jpg" alt=""><figcaption>신불당 이안 아파트 커뮤니티 헬스장 · 위탁운영 현장</figcaption></figure>
+    <div class="op2">
+      <div class="card"><b class="no">01 · FACILITY</b><h3>시설 운영관리</h3><ul class="list"><li>운영시간 · 이용수칙 관리</li><li>입 · 퇴장 및 이용현황 관리</li><li>기구 상태 점검 및 유지관리 연계</li><li>현장 민원 접수 · 처리 지원</li></ul></div>
+      <div class="card"><b class="no">02 · MEMBER</b><h3>회원 · 프로그램 관리</h3><ul class="list"><li>입주민 이용 안내 및 회원관리</li><li>필요 시 트레이너 · 안내 인력 배치</li><li>OT 및 운동지도 프로그램 운영</li><li>월간 운영보고와 개선사항 제안</li></ul></div>
+    </div>
+    <p class="note">※ 인력 규모 · 운영시간 · 프로그램 · 수익 귀속 구조는 단지 여건에 맞춰 협의합니다.</p>
+  </div>
+  <div class="pn"><span>JS SPORTS · APARTMENT OPERATION</span><b>07</b></div>
+</section>
+
+<!-- ============ 08 PLANS A/B/C ============ -->
+<section class="pg pale">
+  <div class="hd"><span><b>03</b> · 아파트 위탁운영</span><span>PLAN A · B · C</span></div>
+  <div class="in">
+    <span class="eyebrow">Plan</span>
+    <h2 class="t">위탁운영 방식은<br><span class="hl">단지별로 맞춤 설계</span></h2>
+    <p class="lead">기구 교체가 반드시 필요한 것은 아닙니다. 기존 자산을 활용하면서 필요한 운영 기능을 보완합니다.</p>
+    <div class="plans">
+      <div class="plan"><span class="bigl">A</span><div><span class="lab">PLAN A</span><h3>전면 위탁운영</h3><p>커뮤니티 체육시설 전체를 JS스포츠가 책임지는 방식</p></div><ul class="list chk"><li>운영인력 + 회원관리</li><li>시설 · 기구 유지관리 연계</li><li>프로그램 기획 · 운영</li><li>실적 및 정산 보고</li></ul></div>
+      <div class="plan b"><span class="bigl">B</span><div><span class="lab">PLAN B</span><h3>부분 위탁운영</h3><p>기존 관리체계는 유지하고 필요한 업무만 분리해 위탁하는 방식</p></div><ul class="list chk"><li>안내데스크 또는 트레이너</li><li>일부 시간대 선택 운영</li><li>기존 관리체계와 병행</li><li>필수 업무만 분리 위탁</li></ul></div>
+      <div class="plan"><span class="bigl">C</span><div><span class="lab">PLAN C</span><h3>통합 패키지</h3><p>위탁운영에 정기점검 · 렌탈 · A/S까지 단지 예산에 맞춰 조합하는 방식</p></div><ul class="list chk"><li>위탁운영 + 정기점검</li><li>필요한 기구만 렌탈 · 교체</li><li>A/S 대응체계 연계</li><li>단지 예산에 맞춘 조합</li></ul></div>
+    </div>
+    <figure class="ph" style="height:46mm;margin-top:4mm"><img src="../img/op-ian-2.jpg" alt=""><figcaption>신불당 이안 아파트 · 위탁운영 현장</figcaption></figure>
+    <p class="note">※ 운영조건 예시이며 실제 계약 범위 · 비용 · 책임구분은 현장 실사 후 제안합니다.</p>
+  </div>
+  <div class="pn"><span>JS SPORTS · APARTMENT OPERATION</span><b>08</b></div>
+</section>
+
+<!-- ============ 09 STAFFING ============ -->
+<section class="pg dark">
+  <div class="hd"><span><b>03</b> · 아파트 위탁운영</span><span>STAFFING</span></div>
+  <div class="in">
+    <span class="eyebrow">Staffing</span>
+    <h2 class="t">기존 시설 <span class="hl">전문인력 배치 · 파견</span> 서비스</h2>
+    <p class="lead">운동기구와 시설은 이미 갖췄지만, 상주 관리인력이 없어 운영이 어려운 아파트에 적합합니다.</p>
+    <figure class="ph" style="height:66mm;margin-top:5mm"><img src="../img/op-dongil-2.jpg" alt=""><figcaption>불당 동일하이빌 커뮤니티 헬스장 · 위탁운영 현장</figcaption></figure>
+    <div class="op2">
+      <div class="card dk"><b class="no">01</b><h3>필요한 인력만 배치</h3><ul class="list"><li>헬스장 트레이너 / 운동지도 인력</li><li>인포데스크 / 회원관리 인력</li><li>시설 순회 · 관리 지원 인력</li><li>요일별 · 시간대별 탄력 배치</li></ul></div>
+      <div class="card dk"><b class="no">02</b><h3>기존 시설 그대로 활용</h3><ul class="list"><li>기구 신규 구매 · 렌탈 없이 시작 가능</li><li>입주민 응대 및 이용질서 관리</li><li>기구 이상 발견 시 점검 · A/S 연계</li><li>인력 관리 및 운영현황 보고 지원</li></ul></div>
+    </div>
+    <div class="quote"><span>핵심 제안</span>“기구는 그대로, 필요한 사람만 배치합니다.”</div>
+  </div>
+  <div class="pn"><span>JS SPORTS · APARTMENT OPERATION</span><b>09</b></div>
+</section>
+
+<!-- ============ 10 CASES 1 ============ -->
+<section class="pg">
+  <div class="hd"><span><b>04</b> · 위탁운영 사례</span><span>CASES</span></div>
+  <div class="in">
+    <span class="eyebrow">Cases</span>
+    <h2 class="t">아파트 커뮤니티 체육시설 <span class="hl">위탁운영 사례</span></h2>
+    <p class="lead">JS스포츠가 위탁운영하는 아파트 커뮤니티 체육시설을 실제 현장 사진으로 소개합니다.</p>
+    <div class="case" style="margin-top:6mm">
+      <div class="caseh"><b>CASE 01</b><h3>신불당 이안 아파트</h3><small>아파트 커뮤니티 체육시설 위탁운영</small></div>
+      <div class="g2">
+        <figure class="ph" style="height:52mm"><img src="../img/op-ian-1.jpg" alt=""><figcaption>웨이트 존</figcaption></figure>
+        <figure class="ph" style="height:52mm"><img src="../img/op-ian-2.jpg" alt=""><figcaption>유산소 존</figcaption></figure>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caseh"><b>CASE 02</b><h3>불당 동일하이빌</h3><small>아파트 커뮤니티 체육시설 위탁운영</small></div>
+      <div class="g2" style="margin-bottom:3mm">
+        <figure class="ph" style="height:50mm"><img src="../img/op-dongil-1.jpg" alt=""><figcaption>유산소 존</figcaption></figure>
+        <figure class="ph" style="height:50mm"><img src="../img/op-dongil-3.jpg" alt=""><figcaption>머신 존</figcaption></figure>
+      </div>
+      <figure class="ph" style="height:46mm"><img src="../img/op-dongil-2.jpg" alt=""><figcaption>웨이트 존</figcaption></figure>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · OPERATION CASES</span><b>10</b></div>
+</section>
+
+<!-- ============ 11 CASES 2 ============ -->
+<section class="pg">
+  <div class="hd"><span><b>04</b> · 위탁운영 사례</span><span>CASES</span></div>
+  <div class="in">
+    <div class="case">
+      <div class="caseh"><b>CASE 03</b><h3>용곡 두산위브</h3><small>아파트 커뮤니티 체육시설 위탁운영</small></div>
+      <figure class="ph" style="height:70mm;margin-bottom:3mm"><img src="../img/op-doosan-1.jpg" alt=""><figcaption>프리웨이트 존</figcaption></figure>
+      <figure class="ph" style="height:62mm"><img src="../img/op-doosan-2.jpg" alt=""><figcaption>머신 존</figcaption></figure>
+    </div>
+    <div style="margin-top:7mm;padding-top:5mm;border-top:.5pt solid var(--line)">
+      <span class="eyebrow">JS SPORTS · 아파트 커뮤니티시설 운영관리 실적</span>
+      <div><span class="chip">신불당 이안 아파트</span><span class="chip">불당 동일하이빌</span><span class="chip">용곡 두산위브</span><span class="chip">용곡 세광 2차</span><span class="chip etc">외 다수</span></div>
+      <p class="lead" style="margin-top:3mm;font-size:8.5pt">운영인력 배치부터 회원관리, 기구 점검까지. 단지 여건에 맞춰 전면 · 부분 · 통합 패키지로 운영합니다.</p>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · OPERATION CASES</span><b>11</b></div>
+</section>
+
+<!-- ============ 12 INSPECTION PROGRAM ============ -->
+<section class="pg">
+  <div class="hd"><span><b>05</b> · 운동시설 관리점검 프로그램</span><span>PROGRAM</span></div>
+  <div class="in">
+    <span class="eyebrow">Program</span>
+    <h2 class="t">시설 <span class="hl">정기점검</span> 프로그램</h2>
+    <p class="lead">JS스포츠는 기구 및 시설관리 정기점검 프로그램으로 안전사고를 대비합니다. 2가지 타입의 체계화된 정기점검 프로그램으로 안전사고에 대비하세요.</p>
+    <div class="why">
+      <div class="card"><b class="no">WHY 01</b><h3>체육공동시설은 안전이 최우선입니다</h3><p>위탁운영을 하여 전문인력이 상주하지 않는 체육시설의 경우, 자체 관리인력으로 기구 A/S를 하거나 사설 A/S 인력을 요청하여 해결하는 경우가 대부분입니다. 하지만 이 경우 정확한 A/S와 신속한 처리가 어려운 단점이 생깁니다.</p></div>
+      <div class="card"><b class="no">WHY 02</b><h3>연간 계약으로 사전에 예방합니다</h3><p>이러한 문제점을 사전에 예방하고자 JS스포츠는 연간 계약을 맺고 A타입 · B타입 프로그램에 맞춰 시설물 정기점검 서비스를 진행합니다. 점검기간 외에 발생하는 A/S도 1~2일 안에 빠르게 방문하여 진행 가능합니다.</p></div>
+    </div>
+    <div class="types">
+      <div class="type"><span class="bigl">A</span><span class="lab">A TYPE</span><h3>월 정기점검 수수료형</h3><p>월 정기점검 수수료를 지불하고, 기구 A/S 비용은 발생 시 별도로 청구되는 기본형 프로그램입니다.</p><ul class="list chk"><li>고객 요청에 따라 월 1회 또는 2회 전문 엔지니어 방문</li><li>유산소 · 웨이트 기구 작동여부 및 전장류 점검</li><li>점검표 작성 및 추후 필요 사항 보고</li><li>기구 A/S 비용 별도 청구</li></ul></div>
+      <div class="type b"><span class="bigl">B</span><span class="lab">B TYPE</span><h3>A/S 전액 책임형</h3><p>정기점검 계약기간 동안 체육공동시설에서 발생하는 모든 A/S 비용을 JS스포츠가 책임지는 안심형 프로그램입니다.</p><ul class="list chk"><li>월 1~2회 전문 엔지니어 정기 방문</li><li>계약기간 내 발생하는 모든 A/S 비용 업체 부담</li><li>점검기간 외 A/S도 1~2일 내 방문</li><li>국산 · 수입 브랜드 구분 없이 원스톱 처리</li></ul></div>
+    </div>
+    <div class="g3" style="margin-top:4mm"><figure class="ph" style="height:34mm"><img src="../img/cardio-2.jpg" alt=""><figcaption>유산소기구 점검</figcaption></figure><figure class="ph" style="height:34mm"><img src="../img/weight-3.jpg" alt=""><figcaption>웨이트기구 점검</figcaption></figure><figure class="ph" style="height:34mm"><img src="../img/facility.jpg" alt=""><figcaption>점검표 작성 · 보고</figcaption></figure></div>
+    <p class="note">※ 납품되어 있는 기구 브랜드 및 연식에 따라 견적이 상이합니다. 정확한 견적은 현장 방문 후 안내드립니다.</p>
+  </div>
+  <div class="pn"><span>JS SPORTS · INSPECTION PROGRAM</span><b>12</b></div>
+</section>
+
+<!-- ============ 13 CARDIO ============ -->
+<section class="pg pale">
+  <div class="hd"><span><b>05</b> · 운동시설 관리점검 프로그램</span><span>CARDIO</span></div>
+  <div class="in">
+    <span class="eyebrow">Cardio</span>
+    <h2 class="t">유산소기구 관리</h2>
+    <p class="lead">유산소기구(런닝머신 및 싸이클)의 작동여부 및 전장류 점검. 주기적으로 관리가 안 된 런닝머신과 싸이클은 인버터류(전장부) 및 먼지와 오염으로 오작동 발생 시 전원 꺼짐, 순간 멈춤으로 인한 낙하사고, 전원부 과부하로 인한 화재 발생의 위험이 있습니다. 정기적인 오일류 도포와 청소작업으로 안전사고 예방 및 고장률 최소화를 목적으로 합니다.</p>
+    <span class="visit">매월 1~2회 정기점검 방문</span>
+    <div class="feat" style="grid-template-columns:1fr;gap:3mm">
+      <div class="fc" style="display:grid;grid-template-columns:62mm 1fr"><figure class="ph" style="height:52mm"><img src="../img/cardio-1.jpg" alt=""></figure><div class="tx"><b>CHECK 01</b><h4>유산소기구 전장류 관리</h4><p>인버터 · 제어보드 등 전장부 점검과 과부하 예방. 먼지와 오염으로 인한 오작동과 화재 위험을 사전에 차단합니다.</p></div></div>
+      <div class="fc" style="display:grid;grid-template-columns:62mm 1fr"><figure class="ph" style="height:52mm"><img src="../img/cardio-2.jpg" alt=""></figure><div class="tx"><b>CHECK 02</b><h4>유산소기구 세부청소</h4><p>내부 먼지 · 오염 제거로 오작동과 화재 위험 차단. 모터부 · 전원부까지 분해 청소합니다.</p></div></div>
+      <div class="fc" style="display:grid;grid-template-columns:62mm 1fr"><figure class="ph" style="height:52mm"><img src="../img/cardio-3.jpg" alt=""></figure><div class="tx"><b>CHECK 03</b><h4>벨트류 점검 및 오일 도포</h4><p>벨트 마모 확인과 정기적인 오일 도포로 수명 연장. 순간 멈춤에 의한 낙하사고를 예방합니다.</p></div></div>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · INSPECTION PROGRAM</span><b>13</b></div>
+</section>
+
+<!-- ============ 14 WEIGHT ============ -->
+<section class="pg">
+  <div class="hd"><span><b>05</b> · 운동시설 관리점검 프로그램</span><span>WEIGHT</span></div>
+  <div class="in">
+    <span class="eyebrow">Weight</span>
+    <h2 class="t">웨이트기구 관리</h2>
+    <p class="lead">웨이트기구의 작동여부 및 전장류 점검. 운동기구는 항상 안전사고에 대비하여 각종 손잡이류와 와이어 상태를 주기적으로 점검해야 합니다. 미관상 보기 안 좋은 레자 부분도 정기적으로 교체해 주어야 합니다.</p>
+    <span class="visit">매월 1~2회 정기점검 방문</span>
+    <div class="feat" style="grid-template-columns:1fr;gap:3mm">
+      <div class="fc" style="display:grid;grid-template-columns:1fr 62mm"><div class="tx"><b>CHECK 01</b><h4>와이어 및 롤러부위 점검</h4><p>와이어 피복 손상 · 롤러 마모 점검으로 끊어짐 사고 예방. 손상 발견 시 즉시 교체합니다.</p></div><figure class="ph" style="height:52mm"><img src="../img/weight-1.jpg" alt=""></figure></div>
+      <div class="fc" style="display:grid;grid-template-columns:1fr 62mm"><div class="tx"><b>CHECK 02</b><h4>패드류 및 손잡이 고무 점검</h4><p>레자 · 패드 · 그립 고무 상태 확인 및 교체. 미관과 위생, 이용자의 안전을 함께 관리합니다.</p></div><figure class="ph" style="height:52mm"><img src="../img/weight-2.jpg" alt=""></figure></div>
+      <div class="fc" style="display:grid;grid-template-columns:1fr 62mm"><div class="tx"><b>CHECK 03</b><h4>베어링 및 작동부 오일 점검</h4><p>각종 베어링 · 체인 · 작동부 윤활 상태 점검. 소음과 마모를 줄여 기구 수명을 연장합니다.</p></div><figure class="ph" style="height:52mm"><img src="../img/weight-3.jpg" alt=""></figure></div>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · INSPECTION PROGRAM</span><b>14</b></div>
+</section>
+
+<!-- ============ 15 CHECK SHEET ============ -->
+<section class="pg dark">
+  <div class="hd"><span><b>05</b> · 운동시설 관리점검 프로그램</span><span>CHECK SHEET</span></div>
+  <div class="in">
+    <span class="eyebrow">Check Sheet</span>
+    <h2 class="t">시설 및 <span class="hl">점검표 관리</span></h2>
+    <p class="lead">전문인력이 주기적으로 관리하는 시설 점검. 체계적인 관리를 위해 점검표를 작성해 기구들의 수명을 관리하고 사용자들의 편의와 안전을 위해 최선을 다합니다.</p>
+    <figure class="ph" style="height:104mm;margin-top:5mm"><img src="../img/facility.jpg" alt=""></figure>
+    <div class="op2">
+      <div class="card dk"><b class="no">POINT 1</b><h3>매 방문 시 점검차트 작성</h3><p>매 방문 시 점검차트로 그날 점검내용과 추후 필요한 부분을 작성합니다. 시설관리는 회원들의 안전 및 기구들의 수명과 직결되는 부분이기에 주기적인 안전점검과 관리가 필요합니다. JS스포츠는 전문인력의 주기적인 관리로 사용자들의 안전을 최우선시합니다.</p></div>
+      <div class="card dk"><b class="no">POINT 2</b><h3>어떤 브랜드든 원스톱 A/S</h3><p>관리 시설마다 다른 브랜드의 운동기구 및 유산소기구가 설치되어 있습니다. JS스포츠는 기구 본사와 달리 A/S 진행 시 원스톱 시스템으로 어떠한 브랜드(국산 · 수입)도 본사 대비 빠르고 저렴하게 A/S 진행이 가능합니다.</p></div>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · INSPECTION PROGRAM</span><b>15</b></div>
+</section>
+
+<!-- ============ 16 RENTAL PROGRAM ============ -->
+<section class="pg pale">
+  <div class="hd"><span><b>06</b> · 운동기구 렌탈 및 납품</span><span>RENTAL PROGRAM</span></div>
+  <div class="in">
+    <span class="eyebrow">Rental Program</span>
+    <h2 class="t">합리적인 가격, 기구렌탈 프로그램<br><span class="hl">4가지 체크리스트</span></h2>
+    <p class="lead">기존의 노후된 기구로 인한 안전사고와 잦은 유상 A/S로 새로운 기구 구매를 고민하고 계시다면, 최소한의 비용으로 운동기구를 렌탈하여 이용할 수 있는 렌탈 프로그램을 추천합니다. 런닝머신 1대부터 피트니스센터의 인테리어까지 원하시는 공간에 전문인력을 파견하여 공간에 맞는 컨설팅과 견적을 상담해 드립니다.</p>
+    <div class="check4">
+      <div class="c"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h3>목돈 ZERO</h3><p>고가의 클럽용 제품을 초기비용 부담 없이 렌트로 이용 가능합니다.</p></div>
+      <div class="c"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>정기점검</h3><p>기구의 퀄리티 유지와 안전점검을 위해 정기적으로 기술자를 파견, 안전하게 관리합니다.</p></div>
+      <div class="c"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>A/S 무료</h3><p>구매 시 무상 A/S 기간이 지난 후에는 출장비와 부품비가 추가 발생하지만, 렌탈은 계약기간 내 A/S가 무료입니다.</p></div>
+      <div class="c"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M12 4l8 8-8 8"/></svg></div><h3>소유권 이전</h3><p>렌탈 기간에 따라 소유권 이전이나 반납 중 택일. 재계약 시 할인 혜택을 드립니다.</p></div>
+    </div>
+    <figure class="ph" style="height:72mm;margin-top:4mm"><img src="../img/rental-apt-floor.jpg" alt="" style="object-position:center 60%"><figcaption>장기렌탈 시 바닥공사 및 기초 인테리어 공사 무상 서비스 (전용 고무바닥재 · 고무블럭 시공)</figcaption></figure>
+  </div>
+  <div class="pn"><span>JS SPORTS · RENTAL &amp; SUPPLY</span><b>16</b></div>
+</section>
+
+<!-- ============ 17 RENTAL CASES ============ -->
+<section class="pg">
+  <div class="hd"><span><b>06</b> · 운동기구 렌탈 및 납품</span><span>RENTAL CASES</span></div>
+  <div class="in">
+    <span class="eyebrow">Rental Cases</span>
+    <h2 class="t">운동기구 렌탈 <span class="hl">실제사례</span></h2>
+    <div class="case" style="margin-top:6mm">
+      <div class="caseh"><b>CASE 01 · 아파트</b><h3>세종 수루배 8단지</h3><small>체육관 바닥공사 · 기구 렌탈</small></div>
+      <p class="lead" style="margin:0 0 3mm;font-size:8.5pt">장기렌탈 시 바닥공사 및 기초 인테리어 공사를 무상으로 서비스해 드립니다. 체육관 바닥공사는 전용 고무바닥재 및 고무블럭으로 시공했습니다.</p>
+      <div class="g3">
+        <figure class="ph" style="height:42mm"><img src="../img/rental-apt-1.jpg" alt=""><figcaption>웨이트 머신 설치</figcaption></figure>
+        <figure class="ph" style="height:42mm"><img src="../img/rental-apt-2.jpg" alt=""><figcaption>프리웨이트 존</figcaption></figure>
+        <figure class="ph" style="height:42mm"><img src="../img/rental-apt-3.jpg" alt=""><figcaption>유산소 존</figcaption></figure>
+      </div>
+    </div>
+    <div class="case">
+      <div class="caseh"><b>CASE 02 · 회사</b><h3>천안 풍세공단 자동차 연구원 체육관</h3><small>기업체 사내 체육관</small></div>
+      <p class="lead" style="margin:0 0 3mm;font-size:8.5pt">임직원 복지시설에 런닝머신 · 바이크 등 유산소 기구와 웨이트 머신을 렌탈로 구성하고 정기점검으로 관리합니다.</p>
+      <figure class="ph" style="height:50mm;margin-bottom:3mm"><img src="../img/rental-co-1.jpg" alt=""><figcaption>유산소 존</figcaption></figure>
+      <div class="g2">
+        <figure class="ph" style="height:40mm"><img src="../img/rental-co-2.jpg" alt=""><figcaption>웨이트 머신</figcaption></figure>
+        <figure class="ph" style="height:40mm"><img src="../img/rental-co-3.jpg" alt=""><figcaption>프리웨이트 랙</figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · RENTAL &amp; SUPPLY</span><b>17</b></div>
+</section>
+
+<!-- ============ 18 PORTFOLIO ============ -->
+<section class="pg">
+  <div class="hd"><span><b>07</b> · 실적현황</span><span>PORTFOLIO</span></div>
+  <div class="in">
+    <span class="eyebrow">Portfolio</span>
+    <h2 class="t">천안 · 아산을 넘어 <span class="hl">전국으로</span></h2>
+    <p class="lead">JS스포츠는 개인 피트니스 센터부터 기업체, 아파트 단지 내 운동시설 운영, 학교 및 관공서까지 다양한 유형의 업체에 ‘토탈 스포츠 서비스’를 제공한 경험을 보유하고 있는 신뢰할 수 있는 기업입니다.</p>
+    <div class="pf">
+      <div class="blk">
+        <h3><b>01 · FITNESS</b>피트니스, 개인PT 납품 및 A/S 관리</h3>
+        <div><span class="chip">헬스보이 서울·경기·충청·경상 전지점</span><span class="chip">쌍용동 레시피</span><span class="chip">백석동 비타민사우나</span><span class="chip">두정동 골드스파</span><span class="chip">두정동 조이랜드</span><span class="chip">신방동 마르지아</span><span class="chip">배방 플렉스짐</span><span class="chip">아산 퍼스트짐</span><span class="chip">두정·신부 팀윤</span><span class="chip">백석파워짐 1·2호점</span><span class="chip">배방 팀H</span><span class="chip">두정동 탄이짐</span><span class="chip">성정동 곰짐</span><span class="chip">바디PT (두정·불당·신방·차암·오창·배방·장재·세종)</span><span class="chip">쌍용동 더머슬짐</span><span class="chip">안성 머슬K</span><span class="chip">수원·춘천 아리랑휘트니스</span><span class="chip">용인·수원 맥스짐</span><span class="chip">안성 JW요가</span><span class="chip etc">외 다수</span></div>
+      </div>
+      <div class="blk">
+        <h3><b>02 · CORPORATE</b>기업체, 아파트 납품 및 A/S 관리</h3>
+        <div><span class="chip">삼성디스플레이 사내 · 기숙사</span><span class="chip">코닝정밀 사내 · 기숙사</span><span class="chip">해태음료</span><span class="chip">스테코</span><span class="chip">한국NSK</span><span class="chip">㈜TMC</span><span class="chip">㈜덕산네오룩스</span><span class="chip">동서산업</span><span class="chip">오산 램리서치</span><span class="chip">탕정 삼성트라팰리스</span><span class="chip">신방동 한성필하우스</span><span class="chip">신방동·용곡동 한라비발디</span><span class="chip">용곡동 동일하이빌</span><span class="chip">성성 푸르지오</span><span class="chip">불당 동일하이빌</span><span class="chip">불당 이안아파트</span><span class="chip">두정동 푸르지오</span><span class="chip">아산 푸르지오 · 포스코</span><span class="chip">아산 W호텔</span><span class="chip etc">외 다수</span></div>
+      </div>
+      <div class="blk">
+        <h3><b>03 · PUBLIC</b>학교, 관공서 납품 및 A/S 관리</h3>
+        <div><span class="chip">나사렛대학교</span><span class="chip">단국대학교</span><span class="chip">상명대학교</span><span class="chip">남서울대학교</span><span class="chip">호서대학교</span><span class="chip">경찰대학교</span><span class="chip">천안인애학교</span><span class="chip">천안중 · 고등학교</span><span class="chip">목천고등학교</span><span class="chip">두정중 · 고등학교</span><span class="chip">청수고등학교</span><span class="chip">충남예술고등학교</span><span class="chip">두정동 장애인복지관</span><span class="chip">아산건강문화센터</span><span class="chip">수신면사무소</span><span class="chip">배방 · 탕정 주민센터</span><span class="chip">예산 · 아산 소방서</span><span class="chip">한들문화센터</span><span class="chip">천안3산업단지 · 천안산업단지</span><span class="chip">민방위재난</span><span class="chip etc">외 다수</span></div>
+      </div>
+      <div class="blk">
+        <h3><b>04 · OPERATION</b>아파트 커뮤니티 체육시설 위탁운영</h3>
+        <div><span class="chip">신불당 이안 아파트</span><span class="chip">불당 동일하이빌</span><span class="chip">용곡 두산위브</span><span class="chip">용곡 세광 2차</span><span class="chip etc">외 다수</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="pn"><span>JS SPORTS · PORTFOLIO</span><b>18</b></div>
+</section>
+
+<!-- ============ 19 PHOTOS ============ -->
+<section class="pg dark">
+  <div class="hd"><span><b>07</b> · 실적현황</span><span>PHOTOS</span></div>
+  <div class="in">
+    <span class="eyebrow">Photos</span>
+    <h2 class="t">충청권 전역 피트니스 기구<br><span class="hl">실제 납품 사진</span></h2>
+    <p class="lead">700평 창고에서 현장까지, 직접 운송 · 설치 · 시운전까지 책임집니다.</p>
+    <div class="g2" style="margin-top:5mm">
+      <figure class="ph" style="height:46mm;grid-column:span 2"><img src="../img/install-2.jpg" alt=""><figcaption>덤벨 · 원판 대량 납품</figcaption></figure>
+      <figure class="ph" style="height:44mm"><img src="../img/install-1.jpg" alt=""><figcaption>웨이트 머신 조립 · 설치</figcaption></figure>
+      <figure class="ph" style="height:44mm"><img src="../img/install-3.jpg" alt=""><figcaption>자체 차량 운송</figcaption></figure>
+      <figure class="ph" style="height:44mm"><img src="../img/rental-co-2.jpg" alt=""><figcaption>웨이트 머신 납품</figcaption></figure>
+      <figure class="ph" style="height:44mm"><img src="../img/rental-apt-2.jpg" alt=""><figcaption>프리웨이트 존 구성</figcaption></figure>
+    </div>
+    <div class="quote" style="margin-top:6mm;font-size:12pt"><span>JS SPORTS</span>전문 엔지니어 구성으로 국산 · 수입 기구 모두<br>매장 다이렉트 A/S가 가능합니다</div>
+  </div>
+  <div class="pn"><span>JS SPORTS · PORTFOLIO</span><b>19</b></div>
+</section>
+
+<!-- ============ 20 BACK COVER ============ -->
+<section class="pg dark back">
+  <div class="bg"></div><div class="veil"></div>
+  <div class="mid">
+    <img src="logo/logo-h-black-t.png" alt="JS SPORTS">
+    <h2>운동시설, 고민하지 말고<br><em>전화하세요</em></h2>
+    <p>전문인력이 직접 방문하여 공간에 맞는 컨설팅과 견적을 상담해 드립니다.<br>운동기구 납품 및 A/S · 체육시설 위탁운영 및 컨설팅 · 인력파견 전문업체</p>
+    <div class="tel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><div>1688-9634<small>컨설팅상담 · 평일 09:00 – 18:00</small></div></div>
+  </div>
+  <div class="addr">
+    <div><b>본사</b> 충남 아산시 배방읍 고불로 690-7<br><b>FAX</b> 041-534-0126 &nbsp;·&nbsp; <b>H.P</b> 010-9229-8051</div>
+    <div><b>홈페이지</b> www.js-sports.kr<br><b>등록</b> 조달청 · 나라장터 등록업체</div>
+    <div class="cp">JS스포츠 · 대표 송종수 · 설립 2012. 03. 20 &nbsp;|&nbsp; TOTAL SPORTS SERVICE &nbsp;|&nbsp; COPYRIGHT © JS SPORTS. ALL RIGHTS RESERVED.</div>
+  </div>
+</section>
+
+</body>
+</html>
