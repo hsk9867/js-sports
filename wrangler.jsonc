@@ -1,0 +1,26 @@
+{
+  "name": "js-sports",
+  "main": "worker.js",
+  "compatibility_date": "2025-01-01",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "js-sports-db",
+      "database_id": "547a078d-dbc4-4909-bb49-849cbb563585",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "unsafe": {
+    "bindings": [
+      { "name": "LOGIN_LIMIT", "type": "ratelimit", "namespace_id": "3201", "simple": { "limit": 5, "period": 60 } },
+      { "name": "TRACK_LIMIT", "type": "ratelimit", "namespace_id": "3202", "simple": { "limit": 60, "period": 60 } },
+      { "name": "FORM_LIMIT", "type": "ratelimit", "namespace_id": "3203", "simple": { "limit": 3, "period": 60 } }
+    ]
+  }
+}

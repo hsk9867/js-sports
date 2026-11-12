@@ -1,0 +1,12 @@
+.git
+.wrangler
+node_modules
+wrangler.jsonc
+.assetsignore
+worker.js
+migrations
+tools
+src
+catalog
+*.py
+CNAME

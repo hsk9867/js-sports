@@ -6,13 +6,14 @@
   if (!grid || !data.length) return;
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
   var IMG = 'img/lexco/';
+  var src = function (p) { return /^(\/|https:)/.test(p.file) ? p.file : IMG + p.file; };   // 관리자에서 올린 사진은 /media/… 주소
   var mmOnly = function (s) { return s.replace(/\s*\(.*\)\s*$/, ''); };      // 인치 표기는 모달에서만
   var kgOnly = function (s) { return s.replace(/\s*\(.*\)\s*$/, ''); };
 
   var render = function (series) {
     grid.innerHTML = data.filter(function (p) { return series === 'all' || p.series === series; }).map(function (p) {
       return '<button type="button" class="lx-card" data-model="' + esc(p.model) + '" aria-label="' + esc(p.ko) + ' 사양 보기">' +
-        '<span class="lx-pic"><img src="' + IMG + p.file + '" alt="' + esc(p.ko + ' ' + p.en) + '" loading="lazy"></span>' +
+        '<span class="lx-pic"><img src="' + src(p) + '" alt="' + esc(p.ko + ' ' + p.en) + '" loading="lazy"></span>' +
         '<span class="lx-txt"><span class="lx-model">' + esc(p.model) + '</span>' +
         '<span class="lx-ko">' + esc(p.ko) + '</span><span class="lx-en">' + esc(p.en) + '</span>' +
         '<span class="lx-spec">' + esc(kgOnly(p.weight)) + (p.block ? ' · 블록 ' + esc(kgOnly(p.block)) : '') + '</span></span></button>';
@@ -40,7 +41,7 @@
   var open = function (model) {
     var p = data.find(function (x) { return x.model === model; }); if (!p) return;
     last = document.activeElement;
-    md.querySelector('#lxImg').src = IMG + p.file; md.querySelector('#lxImg').alt = p.ko;
+    md.querySelector('#lxImg').src = src(p); md.querySelector('#lxImg').alt = p.ko;
     md.querySelector('#lxSeries').textContent = (p.series === 'master' ? 'LEXCO MASTER · 웨이트 머신' : 'LEXCO FREE WEIGHT · 프리웨이트') + ' · ' + p.model;
     md.querySelector('#lxName').textContent = p.ko;
     md.querySelector('#lxEn').textContent = p.en;

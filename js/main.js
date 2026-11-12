@@ -93,11 +93,27 @@
   /* contact form (mailto fallback) */
   const form=$('.form');
   if(form){
-    form.addEventListener('submit',e=>{
-      e.preventDefault();
-      const d=new FormData(form);
+    // 홈페이지 서버(관리자 > 상담 신청)로 접수. 서버가 없는 주소(GitHub Pages 등)에서는 메일 작성 창으로 대신 보냄
+    const mailto=d=>{
       const body=['이름: '+d.get('name'),'연락처: '+d.get('tel'),'시설유형: '+d.get('type'),'문의내용:',d.get('msg')].join('\n');
       location.href='mailto:jssports@js-sports.kr?subject='+encodeURIComponent('[홈페이지 상담문의] '+d.get('name'))+'&body='+encodeURIComponent(body);
+    };
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();
+      const d=new FormData(form), btn=form.querySelector('button[type=submit]');
+      if(btn){btn.disabled=true;btn.dataset.t=btn.textContent;btn.textContent='접수 중…';}
+      try{
+        const r=await fetch('/api/inquiry',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({name:d.get('name'),tel:d.get('tel'),type:d.get('type'),msg:d.get('msg'),hp:d.get('hp')||'',page:location.pathname})});
+        if(r.status===404||r.status===405){mailto(d);return;}
+        const j=await r.json().catch(()=>({}));
+        if(!r.ok)throw new Error(j.error||'접수하지 못했습니다.');
+        form.reset();
+        alert('상담 신청이 접수되었습니다. 담당자가 확인 후 연락드리겠습니다.');
+      }catch(err){
+        alert((err&&err.message?err.message:'접수하지 못했습니다.')+'\n급하신 경우 1688-9634 로 전화 주세요.');
+      }finally{
+        if(btn){btn.disabled=false;btn.textContent=btn.dataset.t;}
+      }
     });
   }
 })();
