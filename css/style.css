@@ -386,7 +386,7 @@ body.menu-open .fullmenu .bigs a:nth-child(6){transition-delay:.45s}
   .subnav{top:64px}
   .hd-tel{display:none}
   .hd-right{gap:16px}
-  .hd-btn{padding:9px 14px;font-size:13px}
+  .hd-btn{display:none}
   .hero{min-height:560px}
   .hero .inner{padding-bottom:110px}
   .hero .ctrl{bottom:40px;left:0;right:auto}
