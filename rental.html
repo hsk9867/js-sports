@@ -57,7 +57,7 @@
     <p>런닝머신 1대부터 피트니스센터 인테리어까지, 최소한의 비용으로 운동기구를 이용하세요</p>
   </div>
 </section>
-<div class="subnav"><div class="wrap"><ul><li><a href="#program">렌탈 프로그램</a></li><li><a href="#case-apt">시공사례 · 아파트</a></li><li><a href="#case-corp">시공사례 · 회사</a></li></ul></div></div>
+<div class="subnav"><div class="wrap"><ul><li><a href="#program">렌탈 프로그램</a></li><li><a href="#lineup">기구 라인업</a></li><li><a href="#case-apt">시공사례 · 아파트</a></li><li><a href="#case-corp">시공사례 · 회사</a></li></ul></div></div>
 
 <section class="section alt" id="program">
   <div class="wrap">
@@ -75,7 +75,22 @@
   </div>
 </section>
 
-<section class="section" id="case-apt">
+<section class="section" id="lineup">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Equipment Lineup</span>
+      <h2>렌탈 · 납품 기구 라인업</h2>
+      <p>클럽용 웨이트 전문 브랜드 LEXCO의 웨이트 머신과 프리웨이트 기구를 렌탈 또는 납품해 드립니다.<br>기구를 누르면 크기 · 중량 · 특징을 확인할 수 있습니다.</p>
+    </div>
+    <div class="lx-tabs rv" id="lxTabs" role="tablist">
+      <button type="button" class="on" role="tab" aria-selected="true" data-series="master">웨이트 머신 <small>LEXCO MASTER · 21</small></button>
+      <button type="button" role="tab" aria-selected="false" data-series="free">프리웨이트 <small>LEXCO FREE WEIGHT · 24</small></button>
+    </div>
+    <div class="lx-grid" id="lxGrid"></div>
+  </div>
+</section>
+
+<section class="section alt" id="case-apt">
   <div class="wrap">
     <div class="casehead rv">
       <h3><small>CASE 01 · 아파트</small>세종 수루배 8단지</h3>
@@ -91,7 +106,7 @@
   </div>
 </section>
 
-<section class="section alt" id="case-corp">
+<section class="section" id="case-corp">
   <div class="wrap">
     <div class="casehead rv">
       <h3><small>CASE 02 · 회사</small>천안 풍세공단 자동차 연구원 체육관</h3>
@@ -128,7 +143,7 @@
       <div class="cols">
         <div><h4>회사소개</h4><ul><li><a href="about.html#greeting">인사말</a></li><li><a href="about.html#overview">회사개요</a></li><li><a href="about.html#warehouse">700평 창고</a></li><li><a href="about.html#process">팀 프로세스</a></li></ul></div>
         <div><h4>시설점검</h4><ul><li><a href="service.html#program">정기점검 프로그램</a></li><li><a href="service.html#cardio">유산소 기구관리</a></li><li><a href="service.html#weight">웨이트 기구관리</a></li><li><a href="service.html#sheet">점검표 관리</a></li></ul></div>
-        <div><h4>기구렌탈</h4><ul><li><a href="rental.html#program">렌탈 프로그램</a></li><li><a href="rental.html#case-apt">사례 · 아파트</a></li><li><a href="rental.html#case-corp">사례 · 회사</a></li></ul></div>
+        <div><h4>기구렌탈</h4><ul><li><a href="rental.html#program">렌탈 프로그램</a></li><li><a href="rental.html#lineup">기구 라인업</a></li><li><a href="rental.html#case-apt">사례 · 아파트</a></li><li><a href="rental.html#case-corp">사례 · 회사</a></li></ul></div>
         <div><h4>위탁운영</h4><ul><li><a href="operation.html#intro">아파트 위탁운영</a></li><li><a href="operation.html#plans">운영 방식 A·B·C</a></li><li><a href="operation.html#staff">전문인력 배치 · 파견</a></li><li><a href="operation.html#cases">위탁운영 사례</a></li></ul></div>
         <div><h4>실적 · 문의</h4><ul><li><a href="portfolio.html">실적현황</a></li><li><a href="portfolio.html#photos">납품 사진</a></li><li><a href="contact.html">상담문의</a></li></ul></div>
       </div>
@@ -142,5 +157,7 @@
 </footer>
 <button class="totop" aria-label="맨 위로"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <script src="js/main.js"></script>
+<script src="js/lexco-data.js"></script>
+<script src="js/lexco.js"></script>
 </body>
 </html>

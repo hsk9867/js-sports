@@ -559,3 +559,59 @@ body.menu-open .fullmenu .bigs a:nth-child(7){transition-delay:.52s}
   .pick-tag{margin-top:24px;font-size:13px;line-height:1.6;word-break:keep-all}
   .pick-tag::before{width:18px;margin-right:8px}
 }
+
+/* ── 렌탈 기구 라인업 (LEXCO) ── */
+.lx-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:36px}
+.lx-tabs button{padding:14px 26px;border:1px solid var(--steel-3);border-radius:40px;background:#fff;font-size:15px;font-weight:700;color:var(--steel);cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.lx-tabs button small{margin-left:6px;font-size:11px;font-weight:600;letter-spacing:.04em;opacity:.7}
+.lx-tabs button.on{background:var(--black);border-color:var(--black);color:#fff}
+.lx-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.lx-card{display:flex;flex-direction:column;text-align:left;background:#fff;border:1px solid var(--steel-3);border-radius:12px;overflow:hidden;cursor:pointer;padding:0;font:inherit;color:inherit;transition:transform .4s var(--ease),box-shadow .4s,border-color .4s}
+.lx-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -28px rgba(11,12,15,.35);border-color:var(--red)}
+.lx-card:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.lx-pic{display:block;position:relative;aspect-ratio:1/1;background:#fff;overflow:hidden}
+.lx-pic img{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);object-fit:contain}
+.lx-txt{display:flex;flex-direction:column;padding:16px 18px 20px;border-top:1px solid var(--steel-pale)}
+.lx-model{font-size:12px;font-weight:800;color:var(--red);letter-spacing:.12em}
+.lx-ko{margin-top:6px;font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--black);word-break:keep-all}
+.lx-en{margin-top:2px;font-size:12px;color:var(--steel-2);letter-spacing:.02em}
+.lx-spec{margin-top:10px;font-size:13px;color:var(--steel)}
+.lx-modal{position:fixed;inset:0;z-index:10000;display:none}
+.lx-modal.open{display:block}
+.lx-bg{position:absolute;inset:0;background:rgba(11,12,15,.7)}
+.lx-box{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(920px,calc(100% - 32px));max-height:calc(100% - 48px);overflow:auto;background:#fff;border-radius:14px;display:grid;grid-template-columns:1fr 1.1fr}
+.lx-x{position:absolute;top:10px;right:12px;width:44px;height:44px;font-size:32px;line-height:1;background:none;border:0;cursor:pointer;color:var(--black);z-index:2}
+.lx-mpic{background:#fff;padding:32px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--steel-pale)}
+.lx-mpic img{max-width:100%;max-height:480px;object-fit:contain}
+.lx-mbody{padding:40px 36px 36px}
+.lx-mseries{font-size:12px;font-weight:800;color:var(--red);letter-spacing:.08em}
+.lx-mbody h3{margin-top:8px;font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--black)}
+.lx-men{margin-top:2px;font-size:13px;color:var(--steel-2);letter-spacing:.04em}
+.lx-dl{margin-top:24px;border-top:2px solid var(--black)}
+.lx-dl div{display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--steel-pale);font-size:14px}
+.lx-dl dt{flex:none;width:72px;font-weight:700;color:var(--black)}
+.lx-dl dd{color:var(--steel)}
+.lx-mbody h4{margin-top:24px;font-size:14px;font-weight:800;color:var(--black)}
+.lx-feat{margin-top:8px;list-style:none;padding:0}
+.lx-feat li{position:relative;padding-left:14px;font-size:14px;line-height:1.7;color:var(--steel);word-break:keep-all}
+.lx-feat li::before{content:"";position:absolute;left:0;top:.75em;width:5px;height:5px;border-radius:50%;background:var(--red)}
+.lx-note{margin-top:16px;font-size:12px;color:var(--steel-2)}
+.lx-mbody .btn{margin-top:22px}
+@media (max-width:1180px){.lx-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:900px){
+  .lx-tabs{margin-bottom:24px}
+  .lx-tabs button{padding:11px 16px;font-size:14px}
+  .lx-tabs button small{display:none}
+  .lx-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .lx-pic img{inset:10px;width:calc(100% - 20px);height:calc(100% - 20px)}
+  .lx-txt{padding:12px 12px 14px}
+  .lx-model{font-size:11px}
+  .lx-ko{font-size:15px}
+  .lx-en{font-size:11px}
+  .lx-spec{font-size:12px;margin-top:6px}
+  .lx-box{grid-template-columns:1fr;top:auto;bottom:0;transform:translateX(-50%);width:100%;max-height:92%;border-radius:16px 16px 0 0}
+  .lx-mpic{padding:20px;border-right:0;border-bottom:1px solid var(--steel-pale)}
+  .lx-mpic img{max-height:260px}
+  .lx-mbody{padding:22px 20px 28px}
+  .lx-mbody h3{font-size:22px}
+}
