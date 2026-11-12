@@ -20,6 +20,13 @@
     }).join('');
   };
   render('master');
+  // 탭의 개수 표시를 실제 목록에 맞춤 (관리자에서 기구를 추가·삭제해도 맞게)
+  [].forEach.call(tabs.querySelectorAll('button'), function (b) {
+    var sm = b.querySelector('small'); if (!sm) return;
+    var n = data.filter(function (p) { return p.series === b.dataset.series; }).length;
+    sm.textContent = sm.textContent.replace(/\d+\s*$/, n);
+    if (!n) b.style.display = 'none';
+  });
 
   tabs.addEventListener('click', function (e) {
     var t = e.target.closest('button'); if (!t) return;
@@ -42,7 +49,7 @@
     var p = data.find(function (x) { return x.model === model; }); if (!p) return;
     last = document.activeElement;
     md.querySelector('#lxImg').src = src(p); md.querySelector('#lxImg').alt = p.ko;
-    md.querySelector('#lxSeries').textContent = (p.series === 'master' ? 'LEXCO MASTER · 웨이트 머신' : 'LEXCO FREE WEIGHT · 프리웨이트') + ' · ' + p.model;
+    md.querySelector('#lxSeries').textContent = ({ master: 'LEXCO MASTER · 웨이트 머신', free: 'LEXCO FREE WEIGHT · 프리웨이트', cardio: 'DRAX · 유산소 머신' }[p.series] || '') + ' · ' + p.model;
     md.querySelector('#lxName').textContent = p.ko;
     md.querySelector('#lxEn').textContent = p.en;
     md.querySelector('#lxDl').innerHTML = '<div><dt>제품 크기</dt><dd>' + esc(mmOnly(p.size)) + '</dd></div><div><dt>제품 중량</dt><dd>' + esc(p.weight) + '</dd></div>' +

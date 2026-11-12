@@ -391,9 +391,9 @@ table.t .bar{display:block;height:6px;border-radius:0 3px 3px 0;background:var(-
     </section>
 
     <section class="view" id="v-lineup">
-      <div class="vhead"><div><h1>기구 라인업</h1><p>기구렌탈 페이지의 "렌탈 · 납품 기구 라인업" 목록입니다. 기구를 추가·삭제하거나 순서·사진·사양을 고칠 수 있습니다.</p></div>
+      <div class="vhead"><div><h1>기구 라인업</h1><p>기구렌탈 페이지의 "렌탈 · 납품 기구 라인업" 목록입니다 (웨이트 머신 · 프리웨이트 · 유산소 머신). 기구를 추가·삭제하거나 순서·사진·사양을 고칠 수 있습니다.</p></div>
         <div class="acts"><button class="btn sm ghost" id="lxReset" type="button">처음 목록으로</button><button class="btn sm accent" id="lxSave" type="button" disabled>저장하기</button></div></div>
-      <div class="lx-tools"><div class="seg" id="lxSeg"><button data-s="master" class="on">웨이트 머신</button><button data-s="free">프리웨이트</button></div><input class="search" id="lxSearch" placeholder="모델·이름으로 찾기"><button class="btn sm" id="lxAdd">+ 기구 추가</button><span class="muted" id="lxCount" style="font-size:12.5px"></span></div>
+      <div class="lx-tools"><div class="seg" id="lxSeg"><button data-s="master" class="on">웨이트 머신</button><button data-s="free">프리웨이트</button><button data-s="cardio">유산소 머신</button></div><input class="search" id="lxSearch" placeholder="모델·이름으로 찾기"><button class="btn sm" id="lxAdd">+ 기구 추가</button><span class="muted" id="lxCount" style="font-size:12.5px"></span></div>
       <div id="lxBody" class="lrows"><div class="loading">불러오는 중…</div></div>
     </section>
 
@@ -896,7 +896,7 @@ const lxImg = (p) => (/^(\/|https:)/.test(p.file || '') ? p.file : '/img/lexco/'
 function renderLx() {
   const q = $('#lxSearch').value.trim().toLowerCase();
   const rows = lx.map((p, i) => [p, i]).filter(([p]) => p.series === lxSeries && (!q || (p.model + p.ko + p.en).toLowerCase().includes(q)));
-  $('#lxCount').textContent = `웨이트 머신 ${lx.filter((p) => p.series === 'master').length} · 프리웨이트 ${lx.filter((p) => p.series === 'free').length}`;
+  $('#lxCount').textContent = `웨이트 머신 ${lx.filter((p) => p.series === 'master').length} · 프리웨이트 ${lx.filter((p) => p.series === 'free').length} · 유산소 ${lx.filter((p) => p.series === 'cardio').length}`;
   $('#lxBody').innerHTML = rows.map(([p, i]) => `<div class="card lx-row" data-i="${i}">
     <div><img src="${esc(lxImg(p))}" alt=""><button class="btn xs" data-op="img" style="margin-top:4px;width:96px">사진 바꾸기</button></div>
     <div class="in">
@@ -907,7 +907,7 @@ function renderLx() {
       <label>제품 중량<input data-f="weight" value="${esc(p.weight)}"></label>
       <label>블록 중량<input data-f="block" value="${esc(p.block || '')}" placeholder="없으면 비워 두기"></label>
       <label class="w">특징 (한 줄에 하나)<textarea data-f="features">${esc((p.features || []).join('\n'))}</textarea></label>
-      <label>구분<select data-f="series"><option value="master"${p.series === 'master' ? ' selected' : ''}>웨이트 머신</option><option value="free"${p.series === 'free' ? ' selected' : ''}>프리웨이트</option></select></label>
+      <label>구분<select data-f="series"><option value="master"${p.series === 'master' ? ' selected' : ''}>웨이트 머신</option><option value="free"${p.series === 'free' ? ' selected' : ''}>프리웨이트</option><option value="cardio"${p.series === 'cardio' ? ' selected' : ''}>유산소 머신</option></select></label>
     </div>
     <div class="ops"><button class="iconb" data-op="up" title="위로">↑</button><button class="iconb" data-op="down" title="아래로">↓</button><button class="iconb del" data-op="del" title="삭제">×</button></div>
   </div>`).join('') || '<div class="empty">기구가 없습니다.</div>';
@@ -950,7 +950,7 @@ $('#lxSave').addEventListener('click', async () => {
   } catch (e) { toast('저장 실패: ' + e.message, true); }
 });
 $('#lxReset').addEventListener('click', async () => {
-  if (!confirm('관리자에서 고친 라인업을 모두 지우고 처음 목록(사양서 45종)으로 되돌릴까요?')) return;
+  if (!confirm('관리자에서 고친 라인업을 모두 지우고 처음 목록(50종)으로 되돌릴까요?')) return;
   try { await api('content', { method: 'PUT', body: JSON.stringify({ del: ['lexco'] }) }); delete settings.lexco; lxDirty = false; await loadLineup(); toast('처음 목록으로 되돌렸습니다.'); }
   catch (e) { toast('실패: ' + e.message, true); }
 });

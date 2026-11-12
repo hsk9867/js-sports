@@ -454,7 +454,7 @@ function cleanLexco(arr) {
   if (!Array.isArray(arr)) return null;
   const s = (v, n) => (typeof v === 'string' ? v.trim().slice(0, n) : '');
   return arr.slice(0, 300).map((p) => ({
-    model: s(p.model, 30), series: p.series === 'free' ? 'free' : 'master', en: s(p.en, 80), ko: s(p.ko, 60),
+    model: s(p.model, 30), series: ['master', 'free', 'cardio'].includes(p.series) ? p.series : 'master', en: s(p.en, 80), ko: s(p.ko, 60),
     size: s(p.size, 120), weight: s(p.weight, 60), block: s(p.block, 60),
     features: (Array.isArray(p.features) ? p.features : []).map((f) => s(f, 120)).filter(Boolean).slice(0, 12),
     file: safeImg(p.file) || (/^[\w.-]+\.(jpg|png|webp)$/i.test(p.file || '') ? p.file : ''),

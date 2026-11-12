@@ -1,4 +1,4 @@
-// LEXCO 웨이트 사양서(LM 웨이트 사양서.pptx, 2026-11-12) 기준 렌탈·납품 기구 데이터
+// 렌탈·납품 기구 데이터: LEXCO 웨이트 사양서(LM 웨이트 사양서.pptx, 2026-11-12) + DRAX 유산소 5종(draxfit.com 제품 사양, 2026-11-12)
 // 사양서 원문: 제원 및 디자인은 품질향상을 위하여 예고 없이 변경될 수 있음
 window.LEXCO = [
  {
@@ -678,5 +678,95 @@ window.LEXCO = [
    "사용자의 안정감을 제공하는 발판"
   ],
   "file": "lf-227.jpg"
+ },
+ {
+  "model": "DSC6",
+  "series": "cardio",
+  "en": "STAIR CLIMBER",
+  "ko": "스테어 클라이머",
+  "size": "L1,594 x W830 x H2,090mm",
+  "weight": "146kg",
+  "block": "",
+  "features": [
+   "25단계 운동 강도 · 플라이휠 ECB 부하 조절",
+   "체인 구동 방식 · 스텝 크기 275 x 200mm",
+   "15.6인치 Full HD 터치스크린(안드로이드) · 강화유리 보호",
+   "디지털 TV 수신 · 스마트폰 미러링(안드로이드 · iOS)",
+   "인텔리전트 터치 심박 시스템(IHRS)",
+   "최대 사용자 중량 180kg"
+  ],
+  "file": "drax-dsc6.jpg"
+ },
+ {
+  "model": "MM5050SE",
+  "series": "cardio",
+  "en": "INCLINE TRAINER",
+  "ko": "마이마운틴 인클라인 트레이너",
+  "size": "L1,250 x W1,049 x H1,631mm",
+  "weight": "130kg",
+  "block": "",
+  "features": [
+   "-5 ~ 50% FS 경사 시스템의 등산용 워킹머신",
+   "속도 0.8 ~ 8km/h · 2HP AC 모터",
+   "다이내믹 스프링 시스템으로 부드러운 워킹 쿠션",
+   "설치 면적이 일반 트레드밀의 1/2",
+   "난이도별 운동 프로그램 20종",
+   "최대 사용자 중량 130kg"
+  ],
+  "file": "drax-mm5050se.jpg"
+ },
+ {
+  "model": "RX7700",
+  "series": "cardio",
+  "en": "REDON TREADMILL",
+  "ko": "레돈 트레드밀",
+  "size": "L2,184 x W933 x H1,537mm",
+  "weight": "190kg",
+  "block": "",
+  "features": [
+   "속도 0.8 ~ 16km/h · 경사 0 ~ 16% 듀얼 인클라인",
+   "스피드싱크 시스템: 달리는 속도를 감지해 자동 조절",
+   "3HP 모터 · 주행면 1,620 x 520mm",
+   "하차 시 자동 정지(세이프티 스톱) · 비상 정지 버튼",
+   "인텔리전트 심박 시스템 · 운동 프로그램 20종",
+   "최대 사용자 중량 180kg"
+  ],
+  "file": "drax-rx7700.jpg"
+ },
+ {
+  "model": "TBU9000",
+  "series": "cardio",
+  "en": "UPRIGHT BIKE",
+  "ko": "입식 바이크",
+  "size": "L1,132 x W639 x H1,521mm",
+  "weight": "61kg",
+  "block": "",
+  "features": [
+   "25단계 부하 조절 · 하이브리드 자가발전 방식",
+   "부드럽고 조용한 V벨트 구동",
+   "15.6인치 Full HD 터치스크린 · TV · 스마트폰 미러링",
+   "레버식 안장 높이 조절 · Step-Through 디자인",
+   "이동 바퀴 · 컵홀더 · 휴대폰 수납함",
+   "최대 사용자 중량 150kg"
+  ],
+  "file": "drax-tbu9000.jpg"
+ },
+ {
+  "model": "TBR7000",
+  "series": "cardio",
+  "en": "RECUMBENT BIKE",
+  "ko": "좌식 바이크",
+  "size": "L1,677 x W590 x H1,395mm",
+  "weight": "72kg",
+  "block": "",
+  "features": [
+   "25단계 부하 조절 · 하이브리드 자가발전 방식",
+   "부드럽고 조용한 V벨트 구동",
+   "15.6인치 Full HD 터치스크린 · TV · 스마트폰 미러링",
+   "슬라이딩 레일식 안장 위치 조절 · Step-Through 디자인",
+   "이동 바퀴 · 컵홀더 · 휴대폰 수납함",
+   "최대 사용자 중량 150kg"
+  ],
+  "file": "drax-tbr7000.jpg"
  }
 ];
