@@ -3,6 +3,10 @@
   "main": "worker.js",
   "compatibility_date": "2025-01-01",
   "workers_dev": true,
+  "routes": [
+    { "pattern": "js-sports.kr", "custom_domain": true },
+    { "pattern": "www.js-sports.kr", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./",
     "binding": "ASSETS",
